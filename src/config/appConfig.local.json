@@ -1,0 +1,12 @@
+{
+    "frontend": {
+      "baseUrl": "http://localhost:4200/"
+    },
+    "backend": {
+      "baseUrl": "https://localhost:5100/api/",
+      "authorityUrl": "https://localhost:5001/"
+    },
+    "buildId": "0",
+    "buildNumber": "0",
+    "buildDate": "1601544062836"
+  }
