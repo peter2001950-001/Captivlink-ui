@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
@@ -15,6 +16,7 @@ export class ApiInterceptor implements HttpInterceptor {
 
   public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let url = req.url
+    console.log(req);
     if (req.url.startsWith('https')) {
       return next.handle(req);
     }
@@ -30,8 +32,7 @@ export class ApiInterceptor implements HttpInterceptor {
     }
 
     apiReq = req.clone({
-      url: url,
-      headers: new HttpHeaders({"Authorization": ["Bearer "]})
+      url: url
     });
 
     return next.handle(apiReq).pipe(

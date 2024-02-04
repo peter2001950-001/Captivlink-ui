@@ -1,16 +1,19 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, shareReplay } from 'rxjs';
+import { BaseService } from 'src/app/shared/services/base.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ContactsService {
+export class ContactsService extends BaseService<null> {
 
 
-  public readonly endpoint = '/WeatherForecast';
+  public readonly endpoint = 'WeatherForecast';
 
-  constructor(public http: HttpClient) {}
+  constructor(public http: HttpClient) {
+    super(http);
+  }
 
   public create(request: any): Observable<any> {
     return this.http.post<any>(this.endpoint, request);
@@ -28,7 +31,7 @@ export class ContactsService {
     return this.http.delete<any>(`${this.endpoint}/${id}`);
   }
 
-  public fetchLatest(params?: HttpParams): Observable<any> {
-    return this.http.get<any>(this.endpoint, { params }).pipe(shareReplay(1));
+  public fetchLatest(params?: HttpParams): Promise<any> {
+    return this.handle<any>("GET", this.endpoint, params);
   }
 }

@@ -28,7 +28,7 @@ export class ContactListComponent implements OnInit {
 
    }
 
-  contacts : Array<Contact> = [];
+  contacts : Array<any> = [];
   totalCount: number = 0;
   first: number = 0;
   rowsPerPage : number = 10;
@@ -55,9 +55,9 @@ export class ContactListComponent implements OnInit {
       params = params.append("showRetired", true);
     }
 
-    this.svc.fetchLatest(params).subscribe(res=>{
-      this.contacts = res.data;
-      this.totalCount = res.totalCount
+    this.svc.fetchLatest(params).then(res=>{
+      this.contacts = res;
+      this.totalCount = res
     })
   }
   paginate(event:any){

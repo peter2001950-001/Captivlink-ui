@@ -15,15 +15,13 @@ export class AppConfigService {
   constructor(private http: HttpClient) {}
 
   public loadAppConfig() {
-    console.log(this.url);
-    return firstValueFrom(this.http
+    return this.http
       .get<any>(this.url)
       .pipe(
         tap((config: any) => {
           this.appConfig = config;
-          console.log(this.appConfig);
         })
-      ));
+      );
   }
   public get config() {
     return this.appConfig;
