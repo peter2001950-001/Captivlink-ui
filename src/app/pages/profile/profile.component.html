@@ -1,0 +1,31 @@
+<p-card header="Profile information">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="py-4">
+    <div class="grid jc-between mb-3">
+      <div class="p-field col-6 py-3">
+        <span class="p-float-label">
+          <input id="name" type="text" class="p-inputtext-lg w-full" pInputText formControlName="firstName"
+          [ngClass]="{ error: form.get('name')?.invalid && form.get('name')?.touched }" />
+          <label for="name">First name</label>
+        </span>
+      </div>
+      <div class="p-field col-6 py-3">
+        <span class="p-float-label">
+          <input id="name" type="text" class="p-inputtext-lg w-full" pInputText formControlName="lastName"
+          [ngClass]="{ error: form.get('name')?.invalid && form.get('name')?.touched }" />
+          <label for="name">Last name</label>
+        </span>
+      </div>
+      <div class="p-field col-12 py-3">
+        <span class="p-float-label">
+          <input id="name" type="text" class="p-inputtext-lg w-full" pInputText formControlName="email"
+          [ngClass]="{ error: form.get('name')?.invalid && form.get('name')?.touched }" />
+          <label for="name">Email</label>
+        </span>
+      </div>
+    </div>
+    <div class="p-field col-12 mt-3">
+      <p-button label="Submit" type="submit" ></p-button>
+    </div>
+  </form>
+
+</p-card>

@@ -16,6 +16,10 @@ const routes: Routes = [
     {
       path: 'contacts',
       loadChildren: () => import('../pages/contacts/contacts.module').then((m) => m.ContactsModule)
+    },
+    {
+      path: 'profile',
+      loadChildren: () => import('../pages/profile/profile.module').then((m) => m.ProfileModule)
     },]
   }
 ];

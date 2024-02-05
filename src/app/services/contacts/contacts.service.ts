@@ -6,7 +6,7 @@ import { BaseService } from 'src/app/shared/services/base.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ContactsService extends BaseService<null> {
+export class ContactsService extends BaseService {
 
 
   public readonly endpoint = 'WeatherForecast';

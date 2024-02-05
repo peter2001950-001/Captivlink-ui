@@ -7,7 +7,7 @@ import { firstValueFrom } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class BaseService<T> {
+export class BaseService {
 
   private readonly authService = inject(AuthService);
   private readonly appConfig = inject(AppConfigService);

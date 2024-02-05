@@ -3,7 +3,7 @@
       "baseUrl": "http://localhost:4200/"
     },
     "backend": {
-      "baseUrl": "https://localhost:5100/api/",
+      "baseUrl": "https://localhost:5001/api/",
       "authorityUrl": "https://localhost:5001/"
     },
     "buildId": "0",
