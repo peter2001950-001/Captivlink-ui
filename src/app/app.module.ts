@@ -14,6 +14,7 @@ import { UnauthorizedComponent } from './shared/unauthorized/unauthorized.compon
 import { AuthGuardService } from './shared/services/auth.guard.service';
 import { ButtonModule } from 'primeng/button';
 import { AuthService } from './shared/services/auth.service';
+import { SocialLinksSelectComponent } from './shared/components/social-links-select/social-links-select.component';
 
 @NgModule({
   declarations: [

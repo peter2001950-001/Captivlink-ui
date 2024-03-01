@@ -6,7 +6,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { ProfileRoutingModule } from './profile-routing.module';
-
+import { DividerModule } from 'primeng/divider';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 
 @NgModule({
@@ -19,7 +20,9 @@ import { ProfileRoutingModule } from './profile-routing.module';
     CardModule,
     InputTextModule,
     ButtonModule,
-    ProfileRoutingModule
+    ProfileRoutingModule,
+    DividerModule,
+    InputTextareaModule
   ]
 })
 export class ProfileModule { }

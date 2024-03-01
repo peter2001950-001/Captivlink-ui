@@ -1,0 +1,12 @@
+<div formArrayName="socialLinks">
+  <div *ngFor="let link of socialLinks.controls; let i=index">
+    <div [formGroupName]="i">
+      <label>
+        Social Link:
+        <input formControlName="url">
+      </label>
+      <button (click)="removeSocialLink(i)">Remove</button>
+    </div>
+  </div>
+  <button (click)="addSocialLink()">Add Social Link</button>
+</div>

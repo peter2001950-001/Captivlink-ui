@@ -23,6 +23,75 @@
         </span>
       </div>
     </div>
+
+    <p-divider type="solid">
+      <b>Company details</b>
+    </p-divider>
+
+    <div *ngIf="role == 'Business'" formGroupName="companyDetails">
+      <div class="grid jc-between mb-3">
+        <div class="p-field col-6 py-3">
+          <span class="p-float-label">
+            <input id="name" type="text" class="p-inputtext-lg w-full" pInputText formControlName="name"
+            [ngClass]="{ error: form.get('name')?.invalid && form.get('name')?.touched }" />
+            <label for="name">Company's name</label>
+          </span>
+        </div>
+        <div class="p-field col-6 py-3">
+          <span class="p-float-label">
+            <input id="name" type="text" class="p-inputtext-lg w-full" pInputText formControlName="identificationNumber"
+            [ngClass]="{ error: form.get('name')?.invalid && form.get('name')?.touched }" />
+            <label for="name">Registration number</label>
+          </span>
+        </div>
+        <div class="p-field col-8 py-3">
+          <span class="p-float-label">
+            <input id="name" type="text" class="p-inputtext-lg w-full" pInputText formControlName="address"
+            [ngClass]="{ error: form.get('name')?.invalid && form.get('name')?.touched }" />
+            <label for="name">Registration address</label>
+          </span>
+        </div>
+        <div class="p-field col-4 py-3">
+          <span class="p-float-label">
+            <input id="name" type="text" class="p-inputtext-lg w-full" pInputText formControlName="countryOfRegistration"
+            [ngClass]="{ error: form.get('name')?.invalid && form.get('name')?.touched }" />
+            <label for="name">Country</label>
+          </span>
+        </div>
+        <div class="p-field col-6 py-3">
+          <span class="p-float-label">
+            <input id="name" type="text" class="p-inputtext-lg w-full" pInputText formControlName="beneficialOwner"
+            [ngClass]="{ error: form.get('name')?.invalid && form.get('name')?.touched }" />
+            <label for="name">Beneficial owner</label>
+          </span>
+        </div>
+        <div class="p-field col-6 py-3">
+          <span class="p-float-label">
+            <input id="name" type="text" class="p-inputtext-lg w-full" pInputText formControlName="website"
+            [ngClass]="{ error: form.get('name')?.invalid && form.get('name')?.touched }" />
+            <label for="name">Company's website</label>
+          </span>
+        </div>
+        <div class="p-field col-12 py-3">
+          <span class="p-float-label">
+            <textarea style="width: 100%;" rows="5" cols="30" pInputTextarea formControlName="summary"></textarea>
+            <label for="name">Summary</label>
+          </span>
+        </div>
+        <div class="p-field col-12 py-3">
+          <span class="p-float-label">
+            <textarea  style="width: 100%;" rows="5" cols="30" pInputTextarea formControlName="description"></textarea>
+            <label for="name">Description</label>
+          </span>
+        </div>
+    </div>
+    </div>
+    <div *ngIf="role == 'ContentCreator'">
+
+    </div>
+
+
+
     <div class="p-field col-12 mt-3">
       <p-button label="Submit" type="submit" ></p-button>
     </div>

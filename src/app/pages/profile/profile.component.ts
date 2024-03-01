@@ -13,6 +13,7 @@ export class ProfileComponent implements OnInit {
 
   form!: FormGroup;
   userId!: string;
+  role!: string;
   ngOnInit(): void {
     console.log("log")
     this.form = this.fb.group({
@@ -22,6 +23,25 @@ export class ProfileComponent implements OnInit {
     });
 
     this.svc.fetch().then((profile)=>{
+      this.role = profile.role;
+      if(this.role == "Business"){
+        this.form.registerControl("companyDetails", this.fb.group({
+          name: this.fb.control('', Validators.required),
+          identificationNumber: this.fb.control('', Validators.required),
+          address: this.fb.control('', Validators.required),
+          countryOfRegistration: this.fb.control('', Validators.required),
+          beneficialOwner: this.fb.control('', Validators.required),
+          website: this.fb.control('', Validators.required),
+          summary: this.fb.control('', Validators.required),
+          description: this.fb.control('', Validators.required),
+          socialMediaLinks: this.fb.array([
+            this.fb.group({
+              url: ['', Validators.required],
+              type: ['', Validators.required]
+            }),
+          ]),
+        }))
+      }
       this.form.patchValue(profile);
     })
   }
