@@ -1,10 +1,10 @@
 <p>layout-topbar works!</p>
 <div class="layout-topbar">
   <a class="layout-topbar-logo" routerLink="">
-      <span>Contact App</span>
+      <span>Captivlink</span>
   </a>
 
-  <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
+  <button *ngIf="profileService.isActivated.value" #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
       <i class="pi pi-bars"></i>
   </button>
 

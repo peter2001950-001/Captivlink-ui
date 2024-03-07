@@ -3,6 +3,7 @@ import { LayoutModule } from './layout.module';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout.component';
+import { ActivationGuardService } from '../shared/services/activation.guard.service';
 
 const routes: Routes = [
   {
@@ -15,7 +16,8 @@ const routes: Routes = [
     },
     {
       path: 'contacts',
-      loadChildren: () => import('../pages/contacts/contacts.module').then((m) => m.ContactsModule)
+      loadChildren: () => import('../pages/contacts/contacts.module').then((m) => m.ContactsModule),
+      canActivate: [ActivationGuardService]
     },
     {
       path: 'profile',

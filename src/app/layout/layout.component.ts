@@ -4,6 +4,8 @@ import { NavigationEnd, Router } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
 import { LayoutService } from './service/layout.service';
 import { LayoutSidebarComponent } from './layout-sidebar/layout-sidebar.component';
+import { ProfileService } from '../services/profile/profile.service';
+import { ActivationGuardService } from '../shared/services/activation.guard.service';
 
 @Component({
   selector: 'app-layout',
@@ -21,7 +23,7 @@ export class LayoutComponent implements OnDestroy {
 
   @ViewChild(LayoutTopbarComponent) appTopbar!: LayoutTopbarComponent;
 
-  constructor(public layoutService: LayoutService, public renderer: Renderer2, public router: Router) {
+  constructor(public layoutService: LayoutService, public renderer: Renderer2, public router: Router, public profile: ProfileService) {
       this.overlayMenuOpenSubscription = this.layoutService.overlayOpen$.subscribe(() => {
           if (!this.menuOutsideClickListener) {
               this.menuOutsideClickListener = this.renderer.listen('document', 'click', event => {
@@ -55,6 +57,10 @@ export class LayoutComponent implements OnDestroy {
               this.hideMenu();
               this.hideProfileMenu();
           });
+
+      this.profile.isActivated.subscribe((isActivated: boolean)=>{
+        console.log("Is activated - " + isActivated);
+      })
   }
 
   hideMenu() {
@@ -96,12 +102,12 @@ export class LayoutComponent implements OnDestroy {
   }
 
   get containerClass() {
-      return {
+    return {
           'layout-theme-light': this.layoutService.config.colorScheme === 'light',
           'layout-theme-dark': this.layoutService.config.colorScheme === 'dark',
           'layout-overlay': this.layoutService.config.menuMode === 'overlay',
           'layout-static': this.layoutService.config.menuMode === 'static',
-          'layout-static-inactive': this.layoutService.state.staticMenuDesktopInactive && this.layoutService.config.menuMode === 'static',
+          'layout-static-inactive': !this.profile.isActivated.value? true : (this.layoutService.state.staticMenuDesktopInactive && this.layoutService.config.menuMode === 'static'),
           'layout-overlay-active': this.layoutService.state.overlayMenuActive,
           'layout-mobile-active': this.layoutService.state.staticMenuMobileActive,
           'p-input-filled': this.layoutService.config.inputStyle === 'filled',

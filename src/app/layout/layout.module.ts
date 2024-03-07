@@ -9,6 +9,7 @@ import { LayoutTopbarComponent } from './layout-topbar/layout-topbar.component';
 import { LayoutMenuComponent } from './layout-menu/layout-menu.component';
 import { LayoutMenuitemComponent } from './layout-menu/layout-manuitem.component';
 import { LayoutSidebarComponent } from './layout-sidebar/layout-sidebar.component';
+import { ActivationGuardService } from '../shared/services/activation.guard.service';
 
 
 @NgModule({
@@ -25,6 +26,6 @@ import { LayoutSidebarComponent } from './layout-sidebar/layout-sidebar.componen
     LayoutRoutingModule,
     ToastModule
   ],
-  providers:[MessageService]
+  providers:[MessageService, ActivationGuardService]
 })
 export class LayoutModule { }

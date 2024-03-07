@@ -1,0 +1,15 @@
+<span class="p-float-label">
+  <p-dropdown styleClass="w-full p-inputtext-lg" [options]="countries" [(ngModel)]="selectedCountry" (ngModelChange)="onChanged()" optionLabel="name" [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a Country">
+    <ng-template pTemplate="selectedItem">
+        <div class="flex align-items-center gap-2" *ngIf="selectedCountry">
+          <img [src]="'data:image/jpg;base64,' + selectedCountry.flag" style="width: 18px" /><div>{{ selectedCountry.name }}</div>
+        </div>
+    </ng-template>
+    <ng-template let-country pTemplate="item">
+        <div class="flex align-items-center gap-2">
+          <img [src]="'data:image/jpg;base64,' + country.flag" style="width: 18px" /><div>{{ country.name }}</div>
+        </div>
+    </ng-template>
+  </p-dropdown>
+  <label for="name">Country</label>
+</span>

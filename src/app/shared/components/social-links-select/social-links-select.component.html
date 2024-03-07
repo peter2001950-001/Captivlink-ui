@@ -1,12 +1,20 @@
-<div formArrayName="socialLinks">
-  <div *ngFor="let link of socialLinks.controls; let i=index">
-    <div [formGroupName]="i">
-      <label>
-        Social Link:
-        <input formControlName="url">
-      </label>
-      <button (click)="removeSocialLink(i)">Remove</button>
+<div [formGroup]="form">
+  <div formArrayName="socialLinks">
+    <div *ngFor="let link of socialLinks.controls; let i=index">
+      <div [formGroupName]="i" class="mt-3" style="display: flex;" >
+        <div>
+          <p-dropdown [options]="socialLinksOptions" formControlName="type" class="col-5"></p-dropdown>
+        </div>
+        <div style="flex-grow: 2;">
+          <input type="text" class="ml-3 w-full" placeholder="Enter url" pInputText formControlName="url"/>
+        </div>
+        <div>
+          <p-button icon="pi pi-times" (click)="removeSocialLink(i)" class="ml-3" styleClass="ml-3 p-button-danger p-button-outlined"></p-button>
+        </div>
+
+      </div>
     </div>
+    <p-button label="+ Social Media Profile" styleClass="mt-3 p-button-outlined" (click)="addSocialLink()"></p-button>
   </div>
-  <button (click)="addSocialLink()">Add Social Link</button>
+
 </div>

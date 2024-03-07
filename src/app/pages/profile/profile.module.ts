@@ -8,6 +8,9 @@ import { ButtonModule } from 'primeng/button';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { DividerModule } from 'primeng/divider';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { SocialLinksSelectModule } from 'src/app/shared/components/social-links-select/social-links-select.module';
+import { CountrySelectModule } from 'src/app/shared/components/country-select/country-select.module';
+import { MessagesModule } from 'primeng/messages';
 
 
 @NgModule({
@@ -22,7 +25,10 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     ButtonModule,
     ProfileRoutingModule,
     DividerModule,
-    InputTextareaModule
+    InputTextareaModule,
+    SocialLinksSelectModule,
+    CountrySelectModule,
+    MessagesModule
   ]
 })
 export class ProfileModule { }

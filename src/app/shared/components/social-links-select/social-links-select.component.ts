@@ -1,5 +1,6 @@
 import { Component, forwardRef, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { SocialLink, SocialLinkType } from '../../models/social-link';
 
 @Component({
   selector: 'app-social-links-select',
@@ -10,12 +11,13 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormArray, FormBuilder, FormGr
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => SocialLinksSelectComponent),
       multi: true
-    }
+    },
   ]
 })
 export class SocialLinksSelectComponent implements OnInit, ControlValueAccessor {
   form!: FormGroup;
   socialLinks!: FormArray;
+  socialLinksOptions: string[] = Object.keys(SocialLinkType);
 
   constructor(private fb: FormBuilder) { }
 
@@ -28,13 +30,17 @@ export class SocialLinksSelectComponent implements OnInit, ControlValueAccessor 
 
   writeValue(value: any): void {
     if (value) {
+      console.log(value);
       this.socialLinks.clear();
-      value.forEach((link : any) => this.socialLinks.push(this.fb.control(link)));
+      value.forEach((link : SocialLink) => this.socialLinks.push(this.fb.group({
+        url: this.fb.control(link.url),
+        type: this.fb.control(link.type)
+      })));
     }
   }
 
   registerOnChange(fn: any): void {
-    this.form.valueChanges.subscribe(fn);
+    this.socialLinks.valueChanges.subscribe(fn);
   }
 
   registerOnTouched(fn: any): void {
@@ -44,10 +50,15 @@ export class SocialLinksSelectComponent implements OnInit, ControlValueAccessor 
   onTouched: any = () => {};
 
   addSocialLink() {
-    this.socialLinks.push(this.fb.control(''));
+    this.socialLinks.push(this.fb.group({
+      url: this.fb.control(''),
+      type: this.fb.control('Facebook')
+    }));
+    console.log(this.socialLinks);
   }
 
   removeSocialLink(index: number) {
+    console.log(index);
     this.socialLinks.removeAt(index);
   }
 }

@@ -3,6 +3,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { LayoutService } from '../service/layout.service';
 import { MenuItem } from 'primeng/api';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { ProfileService } from 'src/app/services/profile/profile.service';
 
 @Component({
   selector: 'app-layout-topbar',
@@ -19,7 +20,7 @@ export class LayoutTopbarComponent {
   @ViewChild('topbarmenu') menu!: ElementRef;
 
 
-  constructor(public layoutService: LayoutService, private authService: AuthService) { }
+  constructor(public layoutService: LayoutService, private authService: AuthService, public profileService: ProfileService) { }
 
 
 
