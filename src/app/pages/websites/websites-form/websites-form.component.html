@@ -1,0 +1,32 @@
+<form [formGroup]="form"  style="margin-top: 25px;">
+  <div class="grid">
+    <div class="col-12 mt-2">
+      <span class="p-float-label">
+        <input id="lastName" pInputText  type="text" formControlName="name" class="p-inputtext-lg w-full " pInputText
+        [ngClass]="{ error: form.get('name')?.invalid && form.get('name')?.touched }"/>
+        <label for="lastName">Name</label>
+      </span>
+    </div>
+    <div class="col-12 mt-2">
+      <span class="p-float-label">
+        <input id="surname" pInputText  type="text" formControlName="domain" class="p-inputtext-lg w-full" pInputText
+        [ngClass]="{ error: form.get('domain')?.invalid && form.get('domain')?.touched }" />
+        <label for="surname">Domain</label>
+      </span>
+    </div>
+    <div class="col-12 mt-2" *ngIf="form.controls['accessToken'].value">
+      <span class="p-input-icon-right  w-full">
+        <i class="pi pi-copy" style="cursor: pointer;" (click)="copyAccessToken()"></i>
+        <input type="text" pInputText formControlName="accessToken" [disabled]="true" [readOnly]="true" class="p-inputtext-lg w-full" />
+      </span>
+    </div>
+
+    <div class="col-12 mt-2 flex align-items-center gap-1">
+      <p-checkbox formControlName="allowSubdomains" [binary]="true" inputId="ny" ></p-checkbox>
+      <label for="ny">Allow subdomains</label>
+    </div>
+  </div>
+</form>
+<div class="flex justify-content-end mt-2 px-2" style="width: 100%;">
+  <button pButton (click)="save()">Save changes</button>
+</div>

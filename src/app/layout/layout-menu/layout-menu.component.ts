@@ -18,10 +18,9 @@ export class LayoutMenuComponent implements OnInit {
         if(role == "Business"){
           this.model = [
             {
-                label: 'Home',
+                label: 'Basic',
                 items: [
-                    { label: 'All Contact', icon: 'pi pi-fw pi-home', routerLink: ['/contacts'] },
-                    { label: 'Archived Contact', icon: 'pi pi-fw pi-home', routerLink: ['/contacts/archive'] }
+                    { label: 'Websites', icon: 'pi pi-fw pi-home', routerLink: ['/websites'] }
                 ]
             }
         ];

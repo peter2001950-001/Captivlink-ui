@@ -5,7 +5,7 @@ import { SocialLink, SocialLinkType } from '../../models/social-link';
 @Component({
   selector: 'app-social-links-select',
   templateUrl: './social-links-select.component.html',
-  styleUrls: ['./social-links-select.component.css'],
+  styleUrls: ['./social-links-select.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

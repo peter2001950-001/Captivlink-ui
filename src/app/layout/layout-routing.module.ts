@@ -22,7 +22,12 @@ const routes: Routes = [
     {
       path: 'profile',
       loadChildren: () => import('../pages/profile/profile.module').then((m) => m.ProfileModule)
-    },]
+    },
+    {
+      path: 'websites',
+      loadChildren: () => import('../pages/websites/websites.module').then((m) => m.WebsitesModule)
+    }
+  ]
   }
 ];
 
