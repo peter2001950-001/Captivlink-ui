@@ -1,0 +1,45 @@
+<div class="grid">
+  <div class="col-12">
+    <p-card header="Create new campaign">
+      <form [formGroup]="form" style="margin-top: 25px;">
+        <div class="grid">
+          <div class="col-12">
+            <p-divider title="Image creatives"><strong> Image Creatives </strong></p-divider>
+            <p>Upload at least one image that is related to this campaign, those images will be useful for the content creators to showcase your brand. Max allowed images: 10</p>
+
+            <app-image-uploader formControlName="images"></app-image-uploader>
+          </div>
+
+
+          <div class="col-12 mt-2">
+            <p-divider><strong>General information</strong></p-divider>
+            <span class="p-float-label">
+              <input id="internalName" pInputText type="text" formControlName="internalName" class="p-inputtext-lg w-full "
+                pInputText [ngClass]="{ error: form.get('internalName')?.invalid && form.get('internalName')?.touched }" />
+              <label for="internalName">Internal name</label>
+            </span>
+          </div>
+          <div class="col-12 mt-2">
+            <span class="p-float-label">
+              <input id="externalName" pInputText type="text" formControlName="externalName" class="p-inputtext-lg w-full"
+                pInputText [ngClass]="{ error: form.get('externalName')?.invalid && form.get('externalName')?.touched }" />
+              <label for="externalName">Public name</label>
+            </span>
+          </div>
+
+          <div class="col-12 mt-2">
+            <div>
+              <div for="externalName" class="mb-2">Description</div>
+              <p-editor formControlName="description" [style]="{ height: '280px' }"></p-editor>
+            </div>
+          </div>
+
+        </div>
+      </form>
+      <div class="flex justify-content-end mt-2 px-2" style="width: 100%;">
+        <button pButton (click)="save()">Save changes</button>
+      </div>
+    </p-card>
+  </div>
+</div>
+

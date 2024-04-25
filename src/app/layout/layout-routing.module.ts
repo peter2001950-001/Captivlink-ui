@@ -26,6 +26,10 @@ const routes: Routes = [
     {
       path: 'websites',
       loadChildren: () => import('../pages/websites/websites.module').then((m) => m.WebsitesModule)
+    },
+    {
+      path: 'campaigns',
+      loadChildren: () => import('../pages/campaigns/campaigns.module').then((m) => m.CampaignsModule)
     }
   ]
   }
