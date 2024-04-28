@@ -1,1 +1,1 @@
-<app-campaigns-form></app-campaigns-form>
+<app-campaigns-form *ngIf="request" [request]="request" headerText="Edit a campaign" (submit)="onSubmit($event)"></app-campaigns-form>

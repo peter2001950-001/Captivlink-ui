@@ -19,24 +19,28 @@
                 </div>
               </div>
               <button type="button" pButton pRipple label="Add new campaign" (click)="open()"></button>
-
             </div>
           </div>
         </ng-template>
         <ng-template pTemplate="header">
           <tr>
-            <th pSortableColumn="name">Internal name <p-sortIcon field="name"></p-sortIcon></th>
-            <th pSortableColumn="domain">Public name <p-sortIcon field="domain"></p-sortIcon></th>
+            <th>Image</th>
+            <th pSortableColumn="internalName">Internal name <p-sortIcon field="internalName"></p-sortIcon></th>
+            <th pSortableColumn="externalName">Public name <p-sortIcon field="externalName"></p-sortIcon></th>
             <th>Link</th>
-            <th>Budget per content creator</th>
+            <th pSortableColumn="budgetPerCreator">Budget per content creator  <p-sortIcon field="budgetPerCreator"></p-sortIcon></th>
             <th>Awards</th>
-            <th>Status</th>
+            <th pSortableColumn="status">Status <p-sortIcon field="budgetPerCreator"></p-sortIcon></th>
             <th>Actions</th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-campaign>
           <tr>
-
+            <td><img
+              class="preview-image"
+              src="{{ campaign.images[0] + '/-/preview/-/resize/x200/' }}"
+              width="100"
+            /></td>
             <td>{{campaign.internalName}}</td>
             <td>{{campaign.externalName}}</td>
             <td>{{campaign.link}}</td>
@@ -53,7 +57,7 @@
               <p-tag severity="success" *ngIf="campaign.status === campaignStatus.Live" value="Live"></p-tag>
               <p-tag severity="danger" *ngIf="campaign.status === campaignStatus.Archived" value="Archived"></p-tag>
             </td>
-            <td><button type="button" pButton pRipple label="Edit" (click)="open(website)"></button>
+            <td><button type="button" pButton pRipple label="Edit" (click)="open(campaign)"></button>
             </td>
           </tr>
         </ng-template>

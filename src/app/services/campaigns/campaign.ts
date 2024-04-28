@@ -4,6 +4,7 @@ export interface Campaign{
   id: string,
   internalName: string,
   externalName: string,
+  description: string,
   images: string[],
   categories: Category[],
   eventName: string,
