@@ -33,7 +33,11 @@ export class ImageUploaderComponent implements ControlValueAccessor {
 
   isDisabled : boolean = false;
   writeValue(obj: any): void {
-    this.ctxProviderRef.nativeElement.addFileFromCdnUrl(obj);
+    if(obj){
+      for (const key in obj) {
+        this.ctxProviderRef.nativeElement.addFileFromCdnUrl(obj[key]);
+      }
+    }
   }
   registerOnChange(fn: any): void {
     this.filesChange.subscribe(fn)

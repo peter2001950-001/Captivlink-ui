@@ -59,23 +59,9 @@ website: any;
 
     if(!_item){
       this.router.navigate(["campaigns", "new"]);
+    }else{
+      this.router.navigate(["campaigns", _item.id]);
     }
-    // let ref;
-    // if(_item){
-    //   ref = this.dynamicDialog.open(WebsitesEditComponent, {
-    //     header: 'Edit a website',
-    //     width: '500px',
-    //     data: _item,
-    //   });
-    // }else{
-    //   ref = this.dynamicDialog.open(WebsitesCreateComponent, {
-    //     header: 'Create new website',
-    //     width: '500px'
-    // });
-    // }
-    // ref?.onClose.subscribe(res=>{
-    //   this.fetchData();
-    // })
   }
 
 }

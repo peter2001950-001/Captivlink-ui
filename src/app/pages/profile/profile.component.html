@@ -105,7 +105,7 @@
         </div>
         <div class="p-field col-12 py-3">
           <span class="p-float-label">
-            <textarea style="width: 100%;" rows="5" cols="30" pInputTextarea formControlName="summary"
+            <textarea style="width: 100%;" rows="2" cols="30" pInputTextarea formControlName="summary"
             [ngClass]="{ error: form.get('personDetails.summary')?.invalid && form.get('personDetails.summary')?.touched }" ></textarea>
             <label for="name">Summary</label>
           </span>
@@ -113,8 +113,8 @@
         <div class="p-field col-12 py-3">
           <span class="p-float-label">
             <textarea  style="width: 100%;" rows="5" cols="30" pInputTextarea formControlName="description"
-            [ngClass]="{ error: form.get('personDetails.summary')?.invalid && form.get('personDetails.summary')?.touched }" ></textarea>
-            <label for="name">Description</label>
+            [ngClass]="{ error: form.get('personDetails.description')?.invalid && form.get('personDetails.description')?.touched }" ></textarea>
+            <label for="description">Description</label>
           </span>
         </div>
         </div>

@@ -8,6 +8,14 @@ import { CardModule } from 'primeng/card';
 import { ImageUploaderModule } from 'src/app/shared/components/image-uploader/image-uploader.module';
 import { DividerModule } from 'primeng/divider';
 import { EditorModule } from 'primeng/editor';
+import { CategoriesSelectModule } from 'src/app/shared/components/categories-select/categories-select.module';
+import { WebsiteSelectModule } from 'src/app/shared/components/website-select/website-select.module';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { CalendarModule } from 'primeng/calendar';
+import { AwardsSelectModule } from 'src/app/shared/components/awards-select/awards-select.module';
+import { InputErrorMessageModule } from 'src/app/shared/components/input-error-message/input-error-message.module';
+import { ConfirmationService } from 'primeng/api';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 
 
@@ -24,8 +32,16 @@ import { EditorModule } from 'primeng/editor';
     CardModule,
     ImageUploaderModule,
     DividerModule,
-    EditorModule
+    EditorModule,
+    CategoriesSelectModule,
+    WebsiteSelectModule,
+    InputNumberModule,
+    CalendarModule,
+    AwardsSelectModule,
+    InputErrorMessageModule,
+    ConfirmDialogModule
   ],
+  providers:[ConfirmationService],
   exports: [CampaignsFormComponent]
 })
 export class CampaignsFormModule { }
