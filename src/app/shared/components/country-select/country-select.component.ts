@@ -1,4 +1,4 @@
-import { Component, OnInit, forwardRef } from '@angular/core';
+import { Component, Input, OnInit, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CountryService } from './country.service';
 import { DropdownFilterOptions } from 'primeng/dropdown';
@@ -20,6 +20,7 @@ export class CountrySelectComponent implements OnInit, ControlValueAccessor {
   selectedCountry: any | undefined;
 
   filterValue: string | undefined = '';
+  @Input() fieldName = "Country";
 
   changeCallback: (event: any) => void = () => {};
   touchedCallback: (event: any) => void = () => {};
@@ -48,7 +49,6 @@ export class CountrySelectComponent implements OnInit, ControlValueAccessor {
   }
 
   onChanged(){
-    console.log(this.selectedCountry);
     this.changeCallback(this.selectedCountry.isoAlpha3);
   }
 

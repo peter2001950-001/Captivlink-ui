@@ -9,7 +9,6 @@ import { AbstractControl } from '@angular/forms';
 export class InputErrorMessageComponent implements OnInit {
 
   ngOnInit(): void {
-    console.log(this.control)
   }
 
   @Input() control : AbstractControl<any, any> | null = null;

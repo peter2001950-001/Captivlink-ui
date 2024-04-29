@@ -17,14 +17,15 @@
   ctx-name="my-uploader"
   pubkey="5e7574b00c0789328de1"
   max-local-file-size-bytes="5000000"
-  multiple-max="15"
+  multiple-max="{{maxImages}}"
+  [multiple]="maxImages>1"
   img-only="true"
   source-list="local, url, facebook, gdrive, instagram"
   ></lr-config>
 
   <lr-file-uploader-regular
     ctx-name="my-uploader"
-    css-src="https://cdn.jsdelivr.net/npm/@uploadcare/blocks/web/lr-file-uploader-regular.min.css"
+    css-src="https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.35.2/web/lr-file-uploader-regular.min.css"
   ></lr-file-uploader-regular>
 
   <lr-upload-ctx-provider

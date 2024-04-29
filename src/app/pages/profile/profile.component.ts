@@ -24,7 +24,6 @@ export class ProfileComponent implements OnInit {
   messages: Message[] = [];
 
   ngOnInit(): void {
-    console.log('log');
     this.form = this.fb.group({
       firstName: this.fb.control('', Validators.required),
       lastName: this.fb.control('', Validators.required),
@@ -67,21 +66,41 @@ export class ProfileComponent implements OnInit {
               summary: this.fb.control('', Validators.required),
               description: this.fb.control('', Validators.required),
               socialMediaLinks: this.fb.control(null, Validators.required),
+              categories: this.fb.control(null, Validators.required),
+              nationality: this.fb.control(null, Validators.required),
+              avatar: this.fb.control("", Validators.required),
             })
           );
         }
 
         this.form.patchValue(profile);
+        if(profile.personDetails){
+          this.form.get("personDetails.avatar")?.setValue([profile.personDetails.avatar]);
+          this.form.get("personDetails.categories")?.setValue(profile.personDetails.categories.map((x:any) => {return {key: x.id, label: x.name}}));
+
+        }
       });
   }
 
   onSubmit() {
-    console.log(Utils.getRawValue(this.form));
     this.form.markAllAsTouched();
+    if(this.form.invalid){
+      return;
+    }
+
+    var body = Utils.getRawValue(this.form);
+
+    if(body.personDetails){
+      body.personDetails.categories = body.personDetails.categories.map((x: any)=> {
+        return x.key
+      })
+
+      body.personDetails.avatar = body.personDetails.avatar[0];
+    }
 
 
 
-    this.svc.update(Utils.getRawValue(this.form)).then((profile) => {
+    this.svc.update(body).then((profile) => {
       this.form.patchValue(profile);
       this.messageService.add({
         severity: 'success',

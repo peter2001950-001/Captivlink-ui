@@ -29,7 +29,6 @@ export class AuthService {
       scope: 'openid profile captivlink-backend',
     };
 
-    console.log(settings);
     this.userManager = new UserManager(settings);
     this.userManager.events.addAccessTokenExpired(() => {
       router.navigate(['unauthorized']);

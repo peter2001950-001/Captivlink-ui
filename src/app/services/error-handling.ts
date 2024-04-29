@@ -1,6 +1,5 @@
 import { MessageService } from 'primeng/api';
 export function errorHandling(err: any, messageService: MessageService){
-  console.log(err);
     if(err.error?.errors){
       for (var prop in err.error?.errors) {
         if (Object.prototype.hasOwnProperty.call(err.error?.errors, prop)) {

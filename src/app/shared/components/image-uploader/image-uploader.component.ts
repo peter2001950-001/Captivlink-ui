@@ -49,6 +49,7 @@ export class ImageUploaderComponent implements ControlValueAccessor {
    this.isDisabled = isDisabled;
   }
 
+  @Input() maxImages: number = 10;
   @Output() filesChange = new EventEmitter<string[]>();
 
   uploadedFiles: OutputFileEntry<'success'>[] = [];

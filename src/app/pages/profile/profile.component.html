@@ -4,21 +4,21 @@
     <div class="grid jc-between mb-3">
       <div class="p-field col-6 py-3">
         <span class="p-float-label">
-          <input id="name" type="text" class="p-inputtext-lg w-full" pInputText formControlName="firstName"
+          <input id="name" type="text" class="w-full" pInputText formControlName="firstName"
           [ngClass]="{ error: form.get('firstName')?.invalid && form.get('firstName')?.touched }" />
           <label for="name">First name</label>
         </span>
       </div>
       <div class="p-field col-6 py-3">
         <span class="p-float-label">
-          <input id="name" type="text" class="p-inputtext-lg w-full" pInputText formControlName="lastName"
+          <input id="name" type="text" class="w-full" pInputText formControlName="lastName"
           [ngClass]="{ error: form.get('lastName')?.invalid && form.get('lastName')?.touched }" />
           <label for="name">Last name</label>
         </span>
       </div>
       <div class="p-field col-12 py-3">
         <span class="p-float-label">
-          <input id="name" type="text" class="p-inputtext-lg w-full" pInputText formControlName="email"
+          <input id="name" type="text" class="w-full" pInputText formControlName="email"
           [ngClass]="{ error: form.get('email')?.invalid && form.get('email')?.touched }" />
           <label for="name">Email</label>
         </span>
@@ -32,21 +32,21 @@
       <div class="grid jc-between mb-3">
         <div class="p-field col-6 py-3">
           <span class="p-float-label">
-            <input id="name" type="text" class="p-inputtext-lg w-full" pInputText formControlName="name"
+            <input id="name" type="text" class="w-full" pInputText formControlName="name"
             [ngClass]="{ error: form.get('companyDetails.name')?.invalid && form.get('companyDetails.name')?.touched }" />
             <label for="name">Company's name</label>
           </span>
         </div>
         <div class="p-field col-6 py-3">
           <span class="p-float-label">
-            <input id="name" type="text" class="p-inputtext-lg w-full" pInputText formControlName="identificationNumber"
+            <input id="name" type="text" class="w-full" pInputText formControlName="identificationNumber"
             [ngClass]="{ error: form.get('name')?.invalid && form.get('name')?.touched }" />
             <label for="name">Registration number</label>
           </span>
         </div>
         <div class="p-field col-8 py-3">
           <span class="p-float-label">
-            <input id="name" type="text" class="p-inputtext-lg w-full" pInputText formControlName="address"
+            <input id="name" type="text" class="w-full" pInputText formControlName="address"
             [ngClass]="{ error: form.get('name')?.invalid && form.get('name')?.touched }" />
             <label for="name">Registration address</label>
           </span>
@@ -56,14 +56,14 @@
         </div>
         <div class="p-field col-6 py-3">
           <span class="p-float-label">
-            <input id="name" type="text" class="p-inputtext-lg w-full" pInputText formControlName="beneficialOwner"
+            <input id="name" type="text" class="w-full" pInputText formControlName="beneficialOwner"
             [ngClass]="{ error: form.get('name')?.invalid && form.get('name')?.touched }" />
             <label for="name">Beneficial owner</label>
           </span>
         </div>
         <div class="p-field col-6 py-3">
           <span class="p-float-label">
-            <input id="name" type="text" class="p-inputtext-lg w-full" pInputText formControlName="website"
+            <input id="name" type="text" class="w-full" pInputText formControlName="website"
             [ngClass]="{ error: form.get('name')?.invalid && form.get('name')?.touched }" />
             <label for="name">Company's website</label>
           </span>
@@ -92,16 +92,33 @@
         </div>
     </div>
     <div *ngIf="role == 'ContentCreator'" formGroupName="personDetails">
+      <div class="grid">
+        <div class="col-12">
+          <p-divider type="solid">
+            <b>Avatar</b>
+          </p-divider>
+          <p>Upload one image that will show on your profile page. It should be a picture of you.</p>
+
+          <app-image-uploader [maxImages]="1" formControlName="avatar"></app-image-uploader>
+          <app-input-error-message [control]="form.get('personDetails.avatar')" name="Avatar"></app-input-error-message>
+
+        </div>
+      </div>
+
       <p-divider type="solid">
         <b>Additional information</b>
       </p-divider>
       <div class="grid jc-between mb-3">
         <div class="p-field col-6 py-3">
           <span class="p-float-label">
-            <input id="name" type="text" class="p-inputtext-lg w-full" pInputText formControlName="nickname"
+            <input id="name" type="text" class="w-full" pInputText formControlName="nickname"
             [ngClass]="{ error: form.get('personDetails.nickname')?.invalid && form.get('personDetails.nickname')?.touched }" />
             <label for="name">Nickname</label>
           </span>
+          <app-input-error-message [control]="form.get('personDetails.nickname')" name="Nickname"></app-input-error-message>
+        </div>
+        <div class="p-field col-6 py-3">
+          <app-country-select fieldName="Nationality" formControlName="nationality"></app-country-select>
         </div>
         <div class="p-field col-12 py-3">
           <span class="p-float-label">
@@ -109,6 +126,7 @@
             [ngClass]="{ error: form.get('personDetails.summary')?.invalid && form.get('personDetails.summary')?.touched }" ></textarea>
             <label for="name">Summary</label>
           </span>
+          <app-input-error-message [control]="form.get('personDetails.summary')" name="Summary"></app-input-error-message>
         </div>
         <div class="p-field col-12 py-3">
           <span class="p-float-label">
@@ -116,6 +134,7 @@
             [ngClass]="{ error: form.get('personDetails.description')?.invalid && form.get('personDetails.description')?.touched }" ></textarea>
             <label for="description">Description</label>
           </span>
+          <app-input-error-message [control]="form.get('personDetails.description')" name="Description"></app-input-error-message>
         </div>
         </div>
         <p-divider type="solid">
@@ -124,7 +143,18 @@
 
         <div class="grid">
           <div class="col-12 py-3">
+            <app-input-error-message [control]="form.get('personDetails.socialMediaLinks')" name="Social media link"></app-input-error-message>
             <app-social-links-select formControlName="socialMediaLinks"></app-social-links-select>
+          </div>
+        </div>
+        <p-divider type="solid">
+          <b>Categories</b>
+        </p-divider>
+
+        <div class="grid">
+          <div class="col-12 py-3">
+            <app-input-error-message [control]="form.get('personDetails.categories')" name="Category"></app-input-error-message>
+            <app-categories-select formControlName="categories"></app-categories-select>
           </div>
         </div>
     </div>

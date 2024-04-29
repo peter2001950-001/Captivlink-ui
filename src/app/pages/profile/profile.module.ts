@@ -11,6 +11,9 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { SocialLinksSelectModule } from 'src/app/shared/components/social-links-select/social-links-select.module';
 import { CountrySelectModule } from 'src/app/shared/components/country-select/country-select.module';
 import { MessagesModule } from 'primeng/messages';
+import { CategoriesSelectModule } from 'src/app/shared/components/categories-select/categories-select.module';
+import { InputErrorMessageModule } from 'src/app/shared/components/input-error-message/input-error-message.module';
+import { ImageUploaderModule } from 'src/app/shared/components/image-uploader/image-uploader.module';
 
 
 @NgModule({
@@ -28,7 +31,10 @@ import { MessagesModule } from 'primeng/messages';
     InputTextareaModule,
     SocialLinksSelectModule,
     CountrySelectModule,
-    MessagesModule
+    MessagesModule,
+    CategoriesSelectModule,
+    InputErrorMessageModule,
+    ImageUploaderModule
   ]
 })
 export class ProfileModule { }
