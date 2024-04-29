@@ -30,7 +30,6 @@ export class SocialLinksSelectComponent implements OnInit, ControlValueAccessor 
 
   writeValue(value: any): void {
     if (value) {
-      console.log(value);
       this.socialLinks.clear();
       value.forEach((link : SocialLink) => this.socialLinks.push(this.fb.group({
         url: this.fb.control(link.url),
@@ -54,11 +53,9 @@ export class SocialLinksSelectComponent implements OnInit, ControlValueAccessor 
       url: this.fb.control(''),
       type: this.fb.control('Facebook')
     }));
-    console.log(this.socialLinks);
   }
 
   removeSocialLink(index: number) {
-    console.log(index);
     this.socialLinks.removeAt(index);
   }
 }

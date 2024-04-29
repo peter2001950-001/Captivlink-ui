@@ -20,7 +20,6 @@ export class WebsitesFormComponent implements OnInit {
     this.form.markAllAsTouched();
     if (this.form.valid) {
         var body = this.form.getRawValue();
-        console.log(body);
         this.submit.emit(body);
     }
   }

@@ -16,10 +16,8 @@ export class WebsitesEditComponent {
   public requestId: any;
 
   ngOnInit(): void {
-      console.log(this.config.data)
       this.request = {...this.config.data};
       this.requestId = this.config.data.id;
-      console.log(this.request);
   }
 
   onSubmit(event: any){

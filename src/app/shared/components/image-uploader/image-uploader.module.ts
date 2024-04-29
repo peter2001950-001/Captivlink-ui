@@ -1,6 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ImageUploaderComponent } from './image-uploader.component';
+import { DialogService } from 'primeng/dynamicdialog';
 
 
 
@@ -12,6 +13,7 @@ import { ImageUploaderComponent } from './image-uploader.component';
   imports: [
     CommonModule
   ],
-  exports:[ImageUploaderComponent]
+  exports:[ImageUploaderComponent],
+  providers:[DialogService]
 })
 export class ImageUploaderModule { }

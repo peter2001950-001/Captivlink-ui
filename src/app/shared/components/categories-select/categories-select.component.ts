@@ -29,7 +29,6 @@ export class CategoriesSelectComponent implements OnInit, ControlValueAccessor {
 
     svc.fetchLatest().then((res)=>{
       this.categories = this.mapCategories(res);
-      console.log(this.categories);
     })
   }
 

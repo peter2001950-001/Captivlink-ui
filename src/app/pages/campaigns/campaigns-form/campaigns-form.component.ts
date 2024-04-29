@@ -22,7 +22,6 @@ export class CampaignsFormComponent implements OnInit{
 
   save(isDraft :boolean) {
     this.form.markAllAsTouched();
-    console.log(this.form.controls["awards"].errors)
     if (this.form.valid) {
         var body = this.form.getRawValue();
         body.categories = body.categories.map((x: any)=> {
