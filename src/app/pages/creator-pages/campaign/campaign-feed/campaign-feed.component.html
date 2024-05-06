@@ -1,0 +1,50 @@
+<div infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" [infiniteScrollDisabled]="disableScroll"
+  (scrolled)="scroller()">
+  <ng-container class="grid" *ngFor="let item of items">
+    <div class="col-12">
+      <p-card>
+        <div class="flex flex-column xl:flex-row xl:align-items-start p-4 gap-4">
+          <img class="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round image"
+            src="{{ item?.images[0] + '/-/preview/-/resize/x200/' }}" [alt]="item?.name" />
+          <div
+            class="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-stretch flex-1 gap-4">
+            <div class="flex flex-column align-items-center sm:align-items-start gap-3">
+              <div class="text-2xl font-bold text-900">{{ item?.externalName }}</div>
+              <div class="description" [innerHTML]="item?.description">
+              </div>
+              <div class="flex align-items-center gap-3">
+                <ng-container *ngFor="let award of item?.awards">
+                  <p-tag *ngIf="award.type === awardType.Percentage" value="{{award.amount}}% per conversion"></p-tag>
+                  <p-tag *ngIf="award.type === awardType.PerClick" value="€{{award.amount}} per click"></p-tag>
+                  <p-tag *ngIf="award.type === awardType.PerConversion"
+                    value="€{{award.amount}} per conversion"></p-tag>
+                </ng-container>
+              </div>
+            </div>
+            <div class="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2"
+              style="flex-wrap: wrap; justify-content: space-evenly;">
+              <table class="details-table">
+                <tr>
+                  <td>Budget: </td>
+                  <td>€{{item?.budgetPerCreator}}</td>
+                </tr>
+                <tr>
+                  <td>End of campaign: </td>
+                  <td>{{item?.endDateTime | date}}</td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <app-company-avatar [company]="item?.company">+</app-company-avatar>
+                  </td>
+                </tr>
+              </table>
+              <button pButton icon="pi pi-eye" (click)="openDetails(item)">View details</button>
+            </div>
+          </div>
+        </div>
+      </p-card>
+    </div>
+  </ng-container>
+</div>
+
+

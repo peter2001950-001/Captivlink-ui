@@ -1,0 +1,65 @@
+
+<p-divider><strong>Images</strong></p-divider>
+
+<div class="previews">
+  <div class="preview" *ngFor="let image of campaign.images" (click)="imageClick(image)">
+    <img
+      class="preview-image"
+      src="{{ image + '/-/preview/-/resize/x200/' }}"
+      width="100"
+    />
+  </div>
+</div>
+
+<p-divider><strong>Description</strong></p-divider>
+<div class="description">
+  <p-scrollPanel [style]="{ width: '100%', height: '250px' }">
+    <div [innerHTML]="campaign.description"></div>
+  </p-scrollPanel>
+</div>
+
+<p-divider><strong>Additional information</strong></p-divider>
+<table style="width: 100%;">
+  <tr>
+    <td>Categories: </td>
+    <td style="display: flex; flex-wrap: wrap;">
+      <ng-container *ngFor="let category of campaign.categories">
+        <div style="margin: 5px;"><p-chip [label]="category.name"></p-chip></div>
+      </ng-container>
+    </td>
+  </tr>
+  <tr>
+    <td>Budget per content creator: </td>
+    <td>€{{campaign?.budgetPerCreator}}
+    </td>
+  </tr>
+  <tr>
+    <td>End date: </td>
+    <td>{{campaign?.endDateTime | date}}
+    </td>
+  </tr>
+  <tr>
+    <td>Company: </td>
+    <td><app-company-avatar [company]="campaign?.company"></app-company-avatar>
+    </td>
+  </tr>
+  <tr>
+    <td>Rewards: </td>
+    <td>
+      <div class="flex align-items-center gap-3">
+        <ng-container *ngFor="let award of campaign?.awards">
+          <p-tag *ngIf="award.type === awardType.Percentage" value="{{award.amount}}% per conversion"></p-tag>
+          <p-tag *ngIf="award.type === awardType.PerClick" value="€{{award.amount}} per click"></p-tag>
+          <p-tag *ngIf="award.type === awardType.PerConversion"
+            value="€{{award.amount}} per conversion"></p-tag>
+        </ng-container>
+      </div>
+    </td>
+  </tr>
+
+</table>
+
+<div class="p-footer flex align-items-center gap-2 justify-content-end" style="margin-bottom: 20px;">
+  <p-button icon="pi pi-times" styleClass="p-button-outlined" label="Discard"></p-button>
+  <p-button icon="pi pi-plus-circle" styleClass="p-button-success" label="Apply" pAutoFocus [autofocus]="true"></p-button>
+</div>

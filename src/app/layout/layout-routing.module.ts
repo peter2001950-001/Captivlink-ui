@@ -1,5 +1,3 @@
-import { ContactListModule } from './../pages/contacts/contact-list/contact-list.module';
-import { LayoutModule } from './layout.module';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout.component';
@@ -30,6 +28,10 @@ const routes: Routes = [
     {
       path: 'campaigns',
       loadChildren: () => import('../pages/campaigns/campaigns.module').then((m) => m.CampaignsModule)
+    },
+    {
+      path: 'creator/campaigns',
+      loadChildren: () => import('../pages/creator-pages/campaign/campaign.module').then((m) => m.CampaignModule)
     }
   ]
   }
