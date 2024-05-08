@@ -1,1 +1,13 @@
-<app-campaigns-form *ngIf="request" [request]="request" headerText="Edit a campaign" (submit)="onSubmit($event)"></app-campaigns-form>
+<p-tabView>
+  <p-tabPanel header="Details">
+    <app-campaigns-form *ngIf="request" [request]="request" headerText="Edit a campaign" (submit)="onSubmit($event)"></app-campaigns-form>
+  </p-tabPanel>
+  <p-tabPanel header="Partners" [disabled]="request.status == 'Draft'">
+      <app-campaigns-partners-list [campaignId]="id"></app-campaigns-partners-list>
+  </p-tabPanel>
+  <p-tabPanel header="Performance" [disabled]="request.status == 'Draft'">
+    <app-campaigns-partners-list [campaignId]="id"></app-campaigns-partners-list>
+  </p-tabPanel>
+</p-tabView>
+
+

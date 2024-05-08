@@ -1,7 +1,7 @@
 
 <p-divider><strong>Images</strong></p-divider>
 
-<div class="previews">
+<div class="previews" *ngIf="campaign?.images">
   <div class="preview" *ngFor="let image of campaign.images" (click)="imageClick(image)">
     <img
       class="preview-image"
@@ -14,7 +14,7 @@
 <p-divider><strong>Description</strong></p-divider>
 <div class="description">
   <p-scrollPanel [style]="{ width: '100%', height: '250px' }">
-    <div [innerHTML]="campaign.description"></div>
+    <div [innerHTML]="campaign?.description"></div>
   </p-scrollPanel>
 </div>
 
@@ -23,7 +23,7 @@
   <tr>
     <td>Categories: </td>
     <td style="display: flex; flex-wrap: wrap;">
-      <ng-container *ngFor="let category of campaign.categories">
+      <ng-container *ngFor="let category of campaign?.categories">
         <div style="margin: 5px;"><p-chip [label]="category.name"></p-chip></div>
       </ng-container>
     </td>
@@ -40,7 +40,7 @@
   </tr>
   <tr>
     <td>Company: </td>
-    <td><app-company-avatar [company]="campaign?.company"></app-company-avatar>
+    <td><app-company-avatar *ngIf="campaign?.company" [company]="campaign?.company"></app-company-avatar>
     </td>
   </tr>
   <tr>
@@ -56,10 +56,27 @@
       </div>
     </td>
   </tr>
-
 </table>
 
+<div *ngIf="campaign?.partnership?.status == 'AwaitingApproval'" class="partnership-container" style="border-color: orange;">
+  <p style="color: orange;" >Your application is <strong>awaiting approval</strong></p>
+</div>
+<div *ngIf="campaign?.partnership?.status == 'Rejected'" class="partnership-container" style="border-color: red;">
+  <p style="color: red;" >Your application is <strong>rejected</strong></p>
+</div>
+<div *ngIf="campaign?.partnership?.status == 'Approved'" class="partnership-container" style="border-color: green;">
+  <p style="color: green;" >You are <strong>approved</strong> for a partnership</p>
+  <div class="flex flex-column gap-2">
+    <label for="username">Affiliate link</label>
+    <span class="p-input-icon-right  w-full">
+      <i class="pi pi-copy" style="cursor: pointer;" (click)="copyLink()"></i>
+      <input type="text" pInputText [(ngModel)]="campaign.partnership.affiliateLink" [readOnly]="true" class="p-inputtext-lg w-full" />
+    </span>
+  </div>
+</div>
+
 <div class="p-footer flex align-items-center gap-2 justify-content-end" style="margin-bottom: 20px;">
-  <p-button icon="pi pi-times" styleClass="p-button-outlined" label="Discard"></p-button>
-  <p-button icon="pi pi-plus-circle" styleClass="p-button-success" label="Apply" pAutoFocus [autofocus]="true"></p-button>
+  <p-button *ngIf="mode=='modal'" icon="pi pi-times" styleClass="p-button-outlined" label="Discard" (onClick)="closeModal()"></p-button>
+  <p-button *ngIf="!campaign?.partnership" icon="pi pi-plus-circle" styleClass="p-button-success" label="Apply" pAutoFocus [autofocus]="true" (onClick)="actionClick()"></p-button>
+  <p-button *ngIf="campaign?.partnership?.status == 'AwaitingApproval'" icon="pi pi-ban" styleClass="p-button-warning" label="Cancel application" pAutoFocus [autofocus]="true" (onClick)="actionClick()"></p-button>
 </div>

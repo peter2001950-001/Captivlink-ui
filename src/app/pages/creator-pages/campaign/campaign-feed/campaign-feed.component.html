@@ -37,6 +37,13 @@
                     <app-company-avatar [company]="item?.company">+</app-company-avatar>
                   </td>
                 </tr>
+                <tr *ngIf="item?.partnership">
+                  <td colspan="2">
+                    <p style="color: orange;" *ngIf="item?.partnership.status == 'AwaitingApproval'" >Your application is <strong>awaiting approval</strong></p>
+                    <p  style="color: red;" *ngIf="item?.partnership.status == 'Rejected'">Your application is <strong>rejected</strong></p>
+                    <p style="color: green;" *ngIf="item?.partnership.status == 'Approved'">You are <strong>approved</strong> for a partnership</p>
+                  </td>
+                </tr>
               </table>
               <button pButton icon="pi pi-eye" (click)="openDetails(item)">View details</button>
             </div>

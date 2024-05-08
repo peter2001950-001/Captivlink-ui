@@ -7,6 +7,9 @@ import { shareReplay, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CountryService {
+  subscribe(arg0: unknown) {
+    throw new Error('Method not implemented.');
+  }
   private endPoint = '/assets/countries.json';
   private countries: any;
 

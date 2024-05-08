@@ -34,9 +34,35 @@ export class CampaignService extends BaseService {
     return this.handle<any>("GET", `${this.endpoint}/${id}`);
   }
 
-  public fetchFeed(params?: HttpParams): Promise<any> {
-    return this.handle<any>("GET", `${this.endpoint}-creator`, params);
+  public approvePartner(id: string): Promise<any> {
+    return this.handle<any>("POST", `${this.endpoint}/partner/${id}/approve`);
   }
 
+  public rejectPartner(id: string): Promise<any> {
+    return this.handle<any>("POST", `${this.endpoint}/partner/${id}/reject`);
+  }
+
+  public fetchCampaignParters(campaignId: string, params?: HttpParams) : Promise<any>{
+    return this.handle<any>("GET", `${this.endpoint}/${campaignId}/partners`, params);
+  }
+  public fetchFeed(params?: HttpParams): Promise<any> {
+    return this.handle<any>("GET", `${this.endpoint}-creator/`, params);
+  }
+
+  public applyForCampaign(campaignId: string): Promise<any> {
+    return this.handle<any>("POST", `${this.endpoint}-creator/${campaignId}/apply`);
+  }
+
+  public revokeCampaign(campaignId: string): Promise<any> {
+    return this.handle<any>("POST", `${this.endpoint}-creator/${campaignId}/revoke`);
+  }
+
+  public fetchPartnerships(params?: HttpParams): Promise<any> {
+    return this.handle<any>("GET", `${this.endpoint}-creator/partnership`, params);
+  }
+
+  public getCreatorCampaignById(id: string): Promise<any> {
+    return this.handle<any>("GET", `${this.endpoint}-creator/${id}`);
+  }
 
 }

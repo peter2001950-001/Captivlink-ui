@@ -1,1 +1,7 @@
-<app-campaigns-form [request]="request" (submit)="onSubmit($event)" headerText="Create new campaign"></app-campaigns-form>
+<div class="grid">
+  <div class="col-12">
+    <p-card [header]="'Create new campaign'">
+      <app-campaigns-form [request]="request" (submit)="onSubmit($event)"></app-campaigns-form>
+    </p-card>
+  </div>
+</div>

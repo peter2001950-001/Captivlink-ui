@@ -1,104 +1,103 @@
 <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
-<div class="grid">
-  <div class="col-12">
-    <p-card [header]="headerText">
-      <form [formGroup]="form" style="margin-top: 25px;">
-        <div class="grid">
-          <div class="col-12">
-            <p-divider title="Image creatives"><strong> Image Creatives </strong></p-divider>
-            <p>Upload at least one image that is related to this campaign, those images will be useful for the content creators to showcase your brand. Max allowed images: 10</p>
+<form [formGroup]="form" style="margin-top: 25px;">
+  <div class="grid">
+    <div class="col-12">
+      <p-divider title="Image creatives"><strong> Image Creatives </strong></p-divider>
+      <p>Upload at least one image that is related to this campaign, those images will be useful for the content
+        creators to showcase your brand. Max allowed images: 10</p>
 
-            <app-image-uploader formControlName="images"></app-image-uploader>
-          </div>
+      <app-image-uploader formControlName="images"></app-image-uploader>
+    </div>
 
 
-          <div class="col-12 mt-2">
-            <p-divider><strong>General information</strong></p-divider>
-            <span class="p-float-label">
-              <input id="internalName" pInputText type="text" formControlName="internalName" class="w-full "
-                pInputText [ngClass]="{ error: form.get('internalName')?.invalid && form.get('internalName')?.touched }" />
-              <label for="internalName">Internal name</label>
-            </span>
-            <app-input-error-message [control]="form.get('internalName')" name="Internal name"></app-input-error-message>
+    <div class="col-12 mt-2">
+      <p-divider><strong>General information</strong></p-divider>
+      <span class="p-float-label">
+        <input id="internalName" pInputText type="text" formControlName="internalName" class="w-full " pInputText
+          [ngClass]="{ error: form.get('internalName')?.invalid && form.get('internalName')?.touched }" />
+        <label for="internalName">Internal name</label>
+      </span>
+      <app-input-error-message [control]="form.get('internalName')" name="Internal name"></app-input-error-message>
 
-          </div>
-          <div class="col-12 mt-2">
-            <span class="p-float-label">
-              <input id="externalName" pInputText type="text" formControlName="externalName" class="w-full"
-                pInputText [ngClass]="{ error: form.get('externalName')?.invalid && form.get('externalName')?.touched }" />
-              <label for="externalName">Public name</label>
-            </span>
-            <app-input-error-message [control]="form.get('externalName')" name="Public name"></app-input-error-message>
+    </div>
+    <div class="col-12 mt-2">
+      <span class="p-float-label">
+        <input id="externalName" pInputText type="text" formControlName="externalName" class="w-full" pInputText
+          [ngClass]="{ error: form.get('externalName')?.invalid && form.get('externalName')?.touched }" />
+        <label for="externalName">Public name</label>
+      </span>
+      <app-input-error-message [control]="form.get('externalName')" name="Public name"></app-input-error-message>
 
-          </div>
+    </div>
 
-          <div class="col-12 mt-2">
-            <div>
-              <div for="externalName" class="mb-2">Description</div>
-              <p-editor formControlName="description" [style]="{ height: '280px' }"></p-editor>
-              <app-input-error-message [control]="form.get('description')" name="Description"></app-input-error-message>
-            </div>
-          </div>
-
-          <div class="col-6 mt-2">
-            <div>
-              <div for="externalName" class="mb-2">Categories</div>
-              <app-categories-select formControlName="categories"></app-categories-select>
-              <app-input-error-message [control]="form.get('categories')" name="Category"></app-input-error-message>
-            </div>
-          </div>
-
-          <div class="col-6 mt-2">
-            <div>
-              <div for="externalName" class="mb-2">Website</div>
-              <app-website-select formControlName="website"></app-website-select>
-              <app-input-error-message [control]="form.get('website')" name="Website"></app-input-error-message>
-            </div>
-          </div>
-
-          <div class="col-12 mt-2">
-            <span class="p-float-label">
-              <input id="link" pInputText type="text" formControlName="link" class="w-full"
-                pInputText [ngClass]="{ error: form.get('link')?.invalid && form.get('link')?.touched }" />
-              <label for="link">Link</label>
-            </span>
-            <app-input-error-message [control]="form.get('link')" name="Link"></app-input-error-message>
-
-          </div>
-
-          <div class="col-12 mt-2">
-            <p-divider><strong>Budget & Duration</strong></p-divider>
-          </div>
-
-          <div class="col-6 mt-3">
-            <span class="p-float-label">
-              <p-inputNumber formControlName="budgetPerCreator" mode="currency" inputId="currency-germany" currency="EUR" locale="en-EN" class="w-full" styleClass="w-full" [min]="minBudget"> </p-inputNumber>
-              <label for="link">Budget per content creator</label>
-            </span>
-            <app-input-error-message [control]="form.get('budgetPerCreator')" name="Budget"></app-input-error-message>
-          </div>
-          <div class="col-6 mt-3">
-            <span class="p-float-label">
-              <p-calendar formControlName="endDateTime" dateFormat="dd/mm/yy" [minDate]="minDate" styleClass="w-full" class="w-full" [disabled]="isEditMode" [readonlyInput]="isEditMode"></p-calendar>
-              <label for="endDateTime">End date</label>
-            </span>
-            <app-input-error-message [control]="form.get('endDateTime')" name="Rnd date"></app-input-error-message>
-          </div>
-          <div class="col-12 mt-2">
-            <p-divider><strong>Rewards</strong></p-divider>
-          </div>
-          <div class="col-12">
-            <app-awards-select formControlName="awards"></app-awards-select>
-            <app-input-error-message [control]="form.get('awards')" name="Reward"></app-input-error-message>
-          </div>
-
-        </div>
-      </form>
-      <div class="flex justify-content-end mt-2 px-2" style="width: 100%;">
-        <button pButton class="mr-2 p-button-outlined" *ngIf="request.status == 'Draft'" (click)="save(true)">Save as draft</button>
-        <button pButton (click)="save(false)">Publish</button>
+    <div class="col-12 mt-2">
+      <div>
+        <div for="externalName" class="mb-2">Description</div>
+        <p-editor formControlName="description" [style]="{ height: '280px' }"></p-editor>
+        <app-input-error-message [control]="form.get('description')" name="Description"></app-input-error-message>
       </div>
-    </p-card>
-  </div>
-</div>
+    </div>
 
+    <div class="col-6 mt-2">
+      <div>
+        <div for="externalName" class="mb-2">Categories</div>
+        <app-categories-select formControlName="categories"></app-categories-select>
+        <app-input-error-message [control]="form.get('categories')" name="Category"></app-input-error-message>
+      </div>
+    </div>
+
+    <div class="col-6 mt-2">
+      <div>
+        <div for="externalName" class="mb-2">Website</div>
+        <app-website-select formControlName="website"></app-website-select>
+        <app-input-error-message [control]="form.get('website')" name="Website"></app-input-error-message>
+      </div>
+    </div>
+
+    <div class="col-12 mt-2">
+      <span class="p-float-label">
+        <input id="link" pInputText type="text" formControlName="link" class="w-full" pInputText
+          [ngClass]="{ error: form.get('link')?.invalid && form.get('link')?.touched }" />
+        <label for="link">Link</label>
+      </span>
+      <app-input-error-message [control]="form.get('link')" name="Link"></app-input-error-message>
+
+    </div>
+
+    <div class="col-12 mt-2">
+      <p-divider><strong>Budget & Duration</strong></p-divider>
+    </div>
+
+    <div class="col-6 mt-3">
+      <span class="p-float-label">
+        <p-inputNumber formControlName="budgetPerCreator" mode="currency" inputId="currency-germany" currency="EUR"
+          locale="en-EN" class="w-full" styleClass="w-full" [min]="minBudget"> </p-inputNumber>
+        <label for="link">Budget per content creator</label>
+      </span>
+      <app-input-error-message [control]="form.get('budgetPerCreator')" name="Budget"></app-input-error-message>
+    </div>
+    <div class="col-6 mt-3">
+      <span class="p-float-label">
+        <p-calendar formControlName="endDateTime" dateFormat="dd/mm/yy" [minDate]="minDate" styleClass="w-full"
+          class="w-full" [disabled]="isEditMode" [readonlyInput]="isEditMode"></p-calendar>
+        <label for="endDateTime">End date</label>
+      </span>
+      <app-input-error-message [control]="form.get('endDateTime')" name="Rnd date"></app-input-error-message>
+    </div>
+    <div class="col-12 mt-2">
+      <p-divider><strong>Rewards</strong></p-divider>
+    </div>
+    <div class="col-12">
+      <app-awards-select formControlName="awards"></app-awards-select>
+      <app-input-error-message [control]="form.get('awards')" name="Reward"></app-input-error-message>
+    </div>
+
+  </div>
+</form>
+<div class="flex justify-content-end mt-2 px-2" style="width: 100%;">
+
+  <button pButton class="mr-2 p-button-outlined" *ngIf="request.status == 'Draft'" (click)="save(true)">Save as
+    draft</button>
+  <button pButton *ngIf="request.status == 'Draft'" (click)="save(false)">Publish</button>
+  <button pButton *ngIf="request.status == 'Live'" (click)="save(false)">Save changes</button>
+</div>

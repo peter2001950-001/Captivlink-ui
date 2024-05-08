@@ -5,6 +5,7 @@
   "backend": {
     "baseUrl": "$API_BASEURL"
   },
+  "publicApi": "$PULIC_API",
   "buildId": "$buildId",
   "buildNumber": "$buildNumber",
   "buildDate": "$buildDate"

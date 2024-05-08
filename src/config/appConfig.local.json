@@ -6,6 +6,7 @@
       "baseUrl": "https://localhost:5001/api/",
       "authorityUrl": "https://localhost:5001/"
     },
+    "publicApi": "ctiv.me",
     "buildId": "0",
     "buildNumber": "0",
     "buildDate": "1601544062836"

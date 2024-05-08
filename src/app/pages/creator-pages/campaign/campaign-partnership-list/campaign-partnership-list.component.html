@@ -1,0 +1,50 @@
+<p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
+<div class="grid">
+  <div class="col-12">
+    <div class="card">
+        <h5>Partnerships</h5>
+      <p-table [value]="items" [paginator]="false" [rows]="5" responsiveLayout="scroll">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Image</th>
+            <th pSortableColumn="externalName">Name <p-sortIcon field="externalName"></p-sortIcon></th>
+            <th pSortableColumn="budgetPerCreator">Budget <p-sortIcon field="budgetPerCreator"></p-sortIcon></th>
+            <th>Rewards</th>
+            <th pSortableColumn="partnership.status">Status <p-sortIcon field="budgetPerCreator"></p-sortIcon></th>
+            <th>Actions</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-item>
+          <tr>
+            <td><img
+              class="preview-image"
+              src="{{ item.images[0] + '/-/preview/-/resize/x200/' }}"
+              width="100"
+            /></td>
+            <td>{{item.externalName}}</td>
+            <td>{{"€" + item.budgetPerCreator}}</td>
+            <td>
+              <div style="margin: 5px;" *ngFor="let award of item.awards">
+                <p-tag *ngIf="award.type === awardType.Percentage" value="{{award.amount}}% per conversion"></p-tag>
+                <p-tag *ngIf="award.type === awardType.PerClick" value="€{{award.amount}} per click"></p-tag>
+                <p-tag *ngIf="award.type === awardType.PerConversion" value="€{{award.amount}} per conversion"></p-tag>
+              </div>
+            </td>
+            <td>
+              <div style="margin: 5px;">
+                <p-tag severity="warning" *ngIf="item.partnership?.status === 'AwaitingApproval'" value="Awaiting approval"></p-tag>
+                <p-tag severity="danger" *ngIf="item.partnership?.status === 'Rejected'" value="Rejected"></p-tag>
+                <p-tag severity="success" *ngIf="item.partnership?.status === 'Approved'" value="Approved"></p-tag>
+              </div>
+            </td>
+            <td>
+              <button pButton icon="pi pi-eye" (click)="open(item)">View details</button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+      <p-paginator [rows]="10" [rowsPerPageOptions]="[10, 25, 50]" [totalRecords]="totalCount"
+        (onPageChange)="paginate($event)"></p-paginator>
+    </div>
+  </div>
+</div>

@@ -30,7 +30,8 @@ export class LayoutMenuComponent implements OnInit {
             {
                 label: 'Influencer',
                 items: [
-                    { label: 'Feed', icon: 'pi pi-fw pi-home', routerLink: ['/creator/campaigns/feed'] }
+                    { label: 'Feed', icon: 'pi pi-fw pi-home', routerLink: ['/creator/campaigns/feed'] },
+                    { label: 'Partnerships', icon: 'pi pi-fw pi-home', routerLink: ['/creator/campaigns/partnerships'] }
                 ]
             }
         ];

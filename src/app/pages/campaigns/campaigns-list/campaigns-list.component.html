@@ -57,7 +57,7 @@
               <p-tag severity="success" *ngIf="campaign.status === campaignStatus.Live" value="Live"></p-tag>
               <p-tag severity="danger" *ngIf="campaign.status === campaignStatus.Archived" value="Archived"></p-tag>
             </td>
-            <td><button type="button" pButton pRipple label="Edit" (click)="open(campaign)"></button>
+            <td><button type="button" pButton pRipple label="Manage" (click)="open(campaign)"></button>
             </td>
           </tr>
         </ng-template>
