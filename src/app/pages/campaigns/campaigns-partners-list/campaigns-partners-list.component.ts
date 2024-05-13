@@ -89,7 +89,7 @@ export class CampaignsPartnersListComponent implements OnInit {
         rejectLabel: "Discard",
         rejectButtonStyleClass: "p-button-outlined",
         accept: () => {
-          this.svc.approvePartner(item.id).then((res)=>{
+          this.svc.rejectPartner(item.id).then((res)=>{
             item.status = "Rejected";
             this.messageService.add({
               severity: 'danger',

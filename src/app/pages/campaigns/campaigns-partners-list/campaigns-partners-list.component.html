@@ -36,7 +36,7 @@
             <td class="action-bar">
               <app-content-creator-details [contentCreator]="item.contentCreator"></app-content-creator-details>
               <p-button *ngIf="item.status == 'AwaitingApproval'" icon="pi pi-plus-circle" styleClass="p-button-success" label="Approve" (onClick)="actionClick(item, true)"></p-button>
-              <p-button *ngIf="item.status == 'AwaitingApproval'" icon="pi pi-ban" styleClass="p-button-warning" label="Reject" (onClick)="actionClick(item, true)"></p-button>
+              <p-button *ngIf="item.status == 'AwaitingApproval'" icon="pi pi-ban" styleClass="p-button-warning" label="Reject" (onClick)="actionClick(item, false)"></p-button>
             </td>
           </tr>
         </ng-template>

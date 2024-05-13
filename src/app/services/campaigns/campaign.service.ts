@@ -46,7 +46,7 @@ export class CampaignService extends BaseService {
     return this.handle<any>("GET", `${this.endpoint}/${campaignId}/partners`, params);
   }
   public fetchFeed(params?: HttpParams): Promise<any> {
-    return this.handle<any>("GET", `${this.endpoint}-creator/`, params);
+    return this.handle<any>("GET", `${this.endpoint}-creator/feed`, params);
   }
 
   public applyForCampaign(campaignId: string): Promise<any> {

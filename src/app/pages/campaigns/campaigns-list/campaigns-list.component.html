@@ -26,10 +26,11 @@
           <tr>
             <th>Image</th>
             <th pSortableColumn="internalName">Internal name <p-sortIcon field="internalName"></p-sortIcon></th>
-            <th pSortableColumn="externalName">Public name <p-sortIcon field="externalName"></p-sortIcon></th>
-            <th>Link</th>
             <th pSortableColumn="budgetPerCreator">Budget per content creator  <p-sortIcon field="budgetPerCreator"></p-sortIcon></th>
             <th>Awards</th>
+            <th>Number of clicks</th>
+            <th>Number of purchases</th>
+            <th>Total purchase value</th>
             <th pSortableColumn="status">Status <p-sortIcon field="budgetPerCreator"></p-sortIcon></th>
             <th>Actions</th>
           </tr>
@@ -42,8 +43,6 @@
               width="100"
             /></td>
             <td>{{campaign.internalName}}</td>
-            <td>{{campaign.externalName}}</td>
-            <td>{{campaign.link}}</td>
             <td>{{"€" + campaign.budgetPerCreator}}</td>
             <td>
               <div style="margin: 5px;" *ngFor="let award of campaign.awards">
@@ -52,6 +51,9 @@
                 <p-tag *ngIf="award.type === awardType.PerConversion" value="€{{award.amount}} per conversion"></p-tag>
               </div>
             </td>
+            <td>{{campaign.totalClicks}}</td>
+            <td>{{campaign.totalPurchases}}</td>
+            <td>€{{campaign.totalPurchaseValue}}</td>
             <td>
               <p-tag severity="warning"  *ngIf="campaign.status === campaignStatus.Draft" value="Draft"></p-tag>
               <p-tag severity="success" *ngIf="campaign.status === campaignStatus.Live" value="Live"></p-tag>
