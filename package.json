@@ -19,6 +19,7 @@
     "@angular/platform-browser-dynamic": "^15.0.0",
     "@angular/router": "^15.0.0",
     "@uploadcare/blocks": "0.35.2",
+    "chart.js": "^4.4.2",
     "jwt-decode": "^4.0.0",
     "ngx-infinite-scroll": "^10.0.0",
     "oidc-client-ts": "^3.0.0",
