@@ -11,6 +11,7 @@ import { ChipModule } from 'primeng/chip';
 import { CompanyAvatarModule } from 'src/app/shared/components/company-avatar/company-avatar.module';
 import { CampaignViewModule } from '../campaign-view/campaign-view.module';
 import { DialogService } from 'primeng/dynamicdialog';
+import { NoContentModule } from 'src/app/shared/components/no-content/no-content.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { DialogService } from 'primeng/dynamicdialog';
     AvatarModule,
     ChipModule,
     CompanyAvatarModule,
-    CampaignViewModule
+    CampaignViewModule,
+    NoContentModule
   ],
   providers: [DialogService]
 })

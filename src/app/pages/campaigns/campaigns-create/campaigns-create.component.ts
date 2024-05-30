@@ -24,6 +24,7 @@ export class CampaignsCreateComponent implements OnInit {
       externalName: '',
       description: '',
       categories: [],
+      status: "Draft"
     };
   }
 

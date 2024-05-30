@@ -80,6 +80,9 @@ export class CampaignsFormComponent implements OnInit {
     if (budgetPerCreator && this.isEditMode) {
       this.minBudget = budgetPerCreator;
     }
+    if (endDateTime && this.isEditMode) {
+      this.minDate = endDateTime;
+    }
 
     this.form = this.fb.group({
       images: this.fb.control(images),
@@ -95,8 +98,7 @@ export class CampaignsFormComponent implements OnInit {
       budgetPerCreator: this.fb.control(budgetPerCreator, [
         Validators.required,
       ]),
-      endDateTime: this.fb.control(
-        { value: endDateTime, disabled: this.isEditMode },
+      endDateTime: this.fb.control(endDateTime,
         [Validators.required]
       ),
       awards: this.fb.control({ value: awards, disabled: this.isEditMode }, [

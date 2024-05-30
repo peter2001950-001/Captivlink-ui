@@ -10,6 +10,7 @@ import { ConfirmDialog, ConfirmDialogModule } from 'primeng/confirmdialog';
 import { TagModule } from 'primeng/tag';
 import { ContentCreatorDetailsModule } from '../content-creator-details/content-creator-details.module';
 import { CampaignService } from 'src/app/services/campaigns/campaign.service';
+import { NoContentModule } from 'src/app/shared/components/no-content/no-content.module';
 
 
 
@@ -26,7 +27,8 @@ import { CampaignService } from 'src/app/services/campaigns/campaign.service';
     CheckboxModule,
     ConfirmDialogModule,
     TagModule,
-    ContentCreatorDetailsModule
+    ContentCreatorDetailsModule,
+    NoContentModule
   ],
   providers:[CampaignService, ConfirmDialog],
   exports: [CampaignsPartnersListComponent]

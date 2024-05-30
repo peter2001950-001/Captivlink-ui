@@ -36,5 +36,5 @@ export enum AwardType{
 export enum CampaignStatus{
   Draft = "Draft",
   Live = "Live",
-  Archived = "Archived"
+  Completed = "Completed"
 }

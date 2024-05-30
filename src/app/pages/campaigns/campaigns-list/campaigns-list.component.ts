@@ -37,6 +37,7 @@ website: any;
     var params = new HttpParams();
     params = params.append("startAt", this.first);
     params = params.append("count", this.rowsPerPage);
+    params = params.append("sortFields", "-createdOn");
     if(this.searchText){
       params = params.append("searchText", this.searchText);
     }

@@ -1,6 +1,6 @@
 <p-toast [baseZIndex]="9999999"></p-toast>
 <div
-  class="layout-wrapper" [ngClass]="containerClass"
+  class="layout-wrapper" [ngClass]="containerClass" *ngIf="!loading"
 >
    <app-layout-topbar></app-layout-topbar>
    <div class="layout-sidebar">
@@ -13,4 +13,8 @@
     </div>
 </div>
 
+</div>
+
+<div class="loader" *ngIf="loading">
+  <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
 </div>

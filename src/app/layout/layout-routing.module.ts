@@ -9,13 +9,8 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [{
       path: '',
-      redirectTo: '/contacts',
+      redirectTo: '/dashboard',
       pathMatch: 'full'
-    },
-    {
-      path: 'contacts',
-      loadChildren: () => import('../pages/contacts/contacts.module').then((m) => m.ContactsModule),
-      canActivate: [ActivationGuardService]
     },
     {
       path: 'profile',
@@ -32,6 +27,10 @@ const routes: Routes = [
     {
       path: 'creator/campaigns',
       loadChildren: () => import('../pages/creator-pages/campaign/campaign.module').then((m) => m.CampaignModule)
+    },
+    {
+      path: 'dashboard',
+      loadChildren: () => import('../pages/dashboard/dashboard.module').then((m) => m.DashboardModule)
     }
   ]
   }

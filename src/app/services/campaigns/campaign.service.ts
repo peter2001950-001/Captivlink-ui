@@ -72,4 +72,8 @@ export class CampaignService extends BaseService {
   public getCampaignPartnersPerformance(id: string, params?: HttpParams): Promise<any> {
     return this.handle<any>("GET", `${this.endpoint}/${id}/partners/performance`, params);
   }
+
+  public getCreatorCampaignPerformance(id: string, params?: HttpParams): Promise<any> {
+    return this.handle<any>("GET", `${this.endpoint}-creator/${id}/performance`, params);
+  }
 }

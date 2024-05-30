@@ -19,6 +19,7 @@ export class CampaignDetailsPageComponent implements OnInit {
       if(this.id)
       this.svc.getCreatorCampaignById(this.id).then((res)=>{
         this.campaign = res;
+        console.log(this.campaign);
       })
     })
 

@@ -79,7 +79,7 @@
     <div class="col-6 mt-3">
       <span class="p-float-label">
         <p-calendar formControlName="endDateTime" dateFormat="dd/mm/yy" [minDate]="minDate" styleClass="w-full"
-          class="w-full" [disabled]="isEditMode" [readonlyInput]="isEditMode"></p-calendar>
+          class="w-full"></p-calendar>
         <label for="endDateTime">End date</label>
       </span>
       <app-input-error-message [control]="form.get('endDateTime')" name="Rnd date"></app-input-error-message>

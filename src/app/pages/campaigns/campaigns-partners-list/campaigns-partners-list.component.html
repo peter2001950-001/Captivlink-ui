@@ -1,5 +1,5 @@
 <p-confirmDialog [style]="{width: '35vw'}"></p-confirmDialog>
-<div class="grid">
+<div class="grid" *ngIf="!noContent">
   <div class="col-12">
     <div class="card">
       <h5>Partnerships</h5>
@@ -46,3 +46,5 @@
     </div>
   </div>
 </div>
+
+<app-no-content *ngIf="noContent" primaryText="No partnerships found" secondaryText="Partnerships will appear here once a Content Creator apply for this campaign."></app-no-content>

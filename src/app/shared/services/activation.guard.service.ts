@@ -13,6 +13,7 @@ export class ActivationGuardService implements CanActivate {
     if(!this.profile.isActivated.value){
       this.router.navigate(['/profile']);
     }
+
     return this.profile.isActivated.value;
   }
 }

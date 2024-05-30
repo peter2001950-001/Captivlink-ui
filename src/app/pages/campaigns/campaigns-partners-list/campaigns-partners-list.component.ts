@@ -15,6 +15,7 @@ export class CampaignsPartnersListComponent implements OnInit {
   constructor(private countryService: CountryService, private svc: CampaignService, private confirmationService: ConfirmationService, private messageService: MessageService) {}
 
   countries?: any[];
+  noContent: boolean = false;
 
   ngOnInit(): void {
     this.countryService.fetch().subscribe((countries: []) => {
@@ -43,6 +44,9 @@ export class CampaignsPartnersListComponent implements OnInit {
         this.items[key].contentCreator.country =  this.countries?.find((country: any) => country.isoAlpha3 === this.items[key].contentCreator.nationality)
       }
       this.totalCount = res.totalCount
+      if(this.items.length == 0){
+        this.noContent = true;
+      }
     })
   }
   paginate(event:any){

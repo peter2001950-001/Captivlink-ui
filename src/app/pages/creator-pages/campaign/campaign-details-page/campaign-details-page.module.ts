@@ -4,6 +4,7 @@ import { CampaignDetailsPageComponent } from './campaign-details-page.component'
 
 import { TabViewModule } from 'primeng/tabview';
 import { CampaignViewModule } from '../campaign-view/campaign-view.module';
+import { CampaignPerformanceViewModule } from '../campaign-performance-view/campaign-performance-view.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { CampaignViewModule } from '../campaign-view/campaign-view.module';
   imports: [
     CommonModule,
     TabViewModule,
-    CampaignViewModule
+    CampaignViewModule,
+    CampaignPerformanceViewModule
   ]
 })
 export class CampaignDetailsPageModule { }

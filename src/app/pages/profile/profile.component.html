@@ -36,6 +36,8 @@
             [ngClass]="{ error: form.get('companyDetails.name')?.invalid && form.get('companyDetails.name')?.touched }" />
             <label for="name">Company's name</label>
           </span>
+          <app-input-error-message [control]="form.get('companyDetails.name')" name="Company's name"></app-input-error-message>
+
         </div>
         <div class="p-field col-6 py-3">
           <span class="p-float-label">
@@ -43,6 +45,8 @@
             [ngClass]="{ error: form.get('name')?.invalid && form.get('name')?.touched }" />
             <label for="name">Registration number</label>
           </span>
+          <app-input-error-message [control]="form.get('companyDetails.identificationNumber')" name="Registration number"></app-input-error-message>
+
         </div>
         <div class="p-field col-8 py-3">
           <span class="p-float-label">
@@ -50,6 +54,8 @@
             [ngClass]="{ error: form.get('name')?.invalid && form.get('name')?.touched }" />
             <label for="name">Registration address</label>
           </span>
+          <app-input-error-message [control]="form.get('companyDetails.address')" name="Registration address"></app-input-error-message>
+
         </div>
         <div class="p-field col-4 py-3">
           <app-country-select formControlName="countryOfRegistration"></app-country-select>
@@ -60,6 +66,8 @@
             [ngClass]="{ error: form.get('name')?.invalid && form.get('name')?.touched }" />
             <label for="name">Beneficial owner</label>
           </span>
+          <app-input-error-message [control]="form.get('companyDetails.beneficialOwner')" name="Beneficial owner"></app-input-error-message>
+
         </div>
         <div class="p-field col-6 py-3">
           <span class="p-float-label">
@@ -67,23 +75,30 @@
             [ngClass]="{ error: form.get('name')?.invalid && form.get('name')?.touched }" />
             <label for="name">Company's website</label>
           </span>
+          <app-input-error-message [control]="form.get('companyDetails.website')" name="Company's website"></app-input-error-message>
+
         </div>
         <div class="p-field col-12 py-3">
           <span class="p-float-label">
             <textarea style="width: 100%;" rows="5" cols="30" pInputTextarea formControlName="summary"></textarea>
             <label for="name">Summary</label>
           </span>
+          <app-input-error-message [control]="form.get('companyDetails.summary')" name="Summary"></app-input-error-message>
+
         </div>
         <div class="p-field col-12 py-3">
           <span class="p-float-label">
             <textarea  style="width: 100%;" rows="5" cols="30" pInputTextarea formControlName="description"></textarea>
             <label for="name">Description</label>
           </span>
+          <app-input-error-message [control]="form.get('companyDetails.description')" name="Description"></app-input-error-message>
+
         </div>
       </div>
         <p-divider type="solid">
           <b>Social media profiles</b>
         </p-divider>
+        <app-input-error-message [control]="form.get('companyDetails.socialMediaLinks')" name="Social media profile"></app-input-error-message>
 
         <div class="grid">
           <div class="col-12 py-3">

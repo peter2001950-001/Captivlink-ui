@@ -21,6 +21,7 @@ export class CampaignPartnershipListComponent {
   searchText?: string;
   awardType = AwardType;
   sorting?: any;
+  noContent: boolean = false;
 
   ngOnInit() {
       this.fetchData();
@@ -37,6 +38,9 @@ export class CampaignPartnershipListComponent {
     this.svc.fetchPartnerships(params).then(res=>{
       this.items = res.data;
       this.totalCount = res.totalCount
+      if(this.items.length == 0){
+        this.noContent = true;
+      }
     })
   }
   paginate(event:any){

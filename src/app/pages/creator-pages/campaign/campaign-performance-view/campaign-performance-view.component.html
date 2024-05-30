@@ -1,0 +1,70 @@
+<div class="grid">
+  <div class="col-12">
+    <div class="flex justify-content-end">
+      <p-calendar [(ngModel)]="rangeDates" (ngModelChange)="changedDates()" selectionMode="range"
+        [readonlyInput]="true" />
+    </div>
+  </div>
+  <div class="col-12 lg:col-6 xl:col-3">
+    <div class="card mb-0">
+      <div class="flex justify-content-between mb-3">
+        <div><span class="block text-500 font-medium mb-3">Clicks</span>
+          <div class="text-900 font-medium text-xl">{{data?.metricsForPeriod.totalClick}}</div>
+        </div>
+        <div class="flex align-items-center justify-content-center bg-blue-100 border-round"
+          style="width: 2.5rem; height: 2.5rem;"><i class="pi pi-shopping-cart text-blue-500 text-xl"></i></div>
+      </div><span class="text-green-500 font-medium">{{data?.metricsLifetime.totalClick}} </span><span
+        class="text-500">in total</span>
+    </div>
+  </div>
+  <div class="col-12 lg:col-6 xl:col-3">
+    <div class="card mb-0">
+      <div class="flex justify-content-between mb-3">
+        <div><span class="block text-500 font-medium mb-3">Purchases</span>
+          <div class="text-900 font-medium text-xl">{{data?.metricsForPeriod.totalPurchases}}</div>
+        </div>
+        <div class="flex align-items-center justify-content-center bg-blue-100 border-round"
+          style="width: 2.5rem; height: 2.5rem;"><i class="pi pi-shopping-cart text-blue-500 text-xl"></i></div>
+      </div><span class="text-green-500 font-medium">{{data?.metricsLifetime.totalPurchases}} </span><span
+        class="text-500">in total</span>
+    </div>
+  </div>
+  <div class="col-12 lg:col-6 xl:col-3">
+    <div class="card mb-0">
+      <div class="flex justify-content-between mb-3">
+        <div><span class="block text-500 font-medium mb-3">Purchases Total Value</span>
+          <div class="text-900 font-medium text-xl">€{{data?.metricsForPeriod.totalValue}}</div>
+        </div>
+        <div class="flex align-items-center justify-content-center bg-blue-100 border-round"
+          style="width: 2.5rem; height: 2.5rem;"><i class="pi pi-shopping-cart text-blue-500 text-xl"></i></div>
+      </div><span class="text-green-500 font-medium">€{{data?.metricsLifetime.totalValue}} </span><span
+        class="text-500">in total</span>
+    </div>
+  </div>
+  <div class="col-12 lg:col-6 xl:col-3">
+    <div class="card mb-0">
+      <div class="flex justify-content-between mb-3">
+        <div><span class="block text-500 font-medium mb-3">Amount earned</span>
+          <div class="text-900 font-medium text-xl">€{{data?.metricsForPeriod.totalAmountSpent}}</div>
+        </div>
+        <div class="flex align-items-center justify-content-center bg-blue-100 border-round"
+          style="width: 2.5rem; height: 2.5rem;"><i class="pi pi-shopping-cart text-blue-500 text-xl"></i></div>
+      </div><span class="text-green-500 font-medium">€{{data?.metricsLifetime.totalAmountSpent}} </span><span
+        class="text-500">in total</span>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <h3>Clicks:</h3>
+    <p-chart type="line" [data]="clicksChart" [options]="options" height="400px" />
+  </div>
+
+  <div class="col-12">
+    <h3>Purchases:</h3>
+    <p-chart type="line" [data]="purchaseChart" [options]="options" height="400px" />
+  </div>
+  <div class="col-12">
+    <h3>Total purchase amount:</h3>
+    <p-chart type="line" [data]="purchaseValueChart" [options]="options" height="400px" />
+  </div>
+</div>

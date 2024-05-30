@@ -16,6 +16,7 @@ export class LayoutComponent implements OnDestroy {
   overlayMenuOpenSubscription: Subscription;
 
   menuOutsideClickListener: any;
+  loading: boolean = true;
 
   profileMenuOutsideClickListener: any;
 
@@ -58,9 +59,14 @@ export class LayoutComponent implements OnDestroy {
               this.hideProfileMenu();
           });
 
-      this.profile.isActivated.subscribe((isActivated: boolean)=>{
-        console.log("Is activated - " + isActivated);
-      })
+      this.profile.fetch().then(res=>{
+        this.loading = false;
+        this.profile.isActivated.subscribe((isActivated: boolean)=>{
+          if(!isActivated)
+            router.navigate(["profile"]);
+        });
+      });
+
   }
 
   hideMenu() {

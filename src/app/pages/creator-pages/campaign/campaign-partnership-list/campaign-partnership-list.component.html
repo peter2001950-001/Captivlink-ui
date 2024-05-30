@@ -1,5 +1,5 @@
 <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
-<div class="grid">
+<div class="grid" *ngIf="!noContent">
   <div class="col-12">
     <div class="card">
         <h5>Partnerships</h5>
@@ -11,6 +11,7 @@
             <th pSortableColumn="budgetPerCreator">Budget <p-sortIcon field="budgetPerCreator"></p-sortIcon></th>
             <th>Rewards</th>
             <th pSortableColumn="partnership.status">Status <p-sortIcon field="budgetPerCreator"></p-sortIcon></th>
+            <th>Amount earned</th>
             <th>Actions</th>
           </tr>
         </ng-template>
@@ -37,6 +38,7 @@
                 <p-tag severity="success" *ngIf="item.partnership?.status === 'Approved'" value="Approved"></p-tag>
               </div>
             </td>
+            <td>{{"€" + item.amountEarned}}</td>
             <td>
               <button pButton icon="pi pi-eye" (click)="open(item)">View details</button>
             </td>
@@ -48,3 +50,6 @@
     </div>
   </div>
 </div>
+
+
+<app-no-content *ngIf="noContent" primaryText="No partnerships found" secondaryText="Partnerships will appear here you apply for a campaign."></app-no-content>

@@ -16,6 +16,7 @@ export class CampaignFeedComponent implements OnInit {
   first: number = 0;
   rowsPerPage: number = 3;
   loading: boolean = false;
+  showNoContent = false;
   ngOnInit(): void {
     this.loadData();
   }
@@ -39,6 +40,9 @@ export class CampaignFeedComponent implements OnInit {
           this.first += this.rowsPerPage;
         }
         this.loading = false;
+        if(this.items == 0){
+          this.showNoContent = true;
+        }
      }).finally
      (()=>{
       this.loading = false;
