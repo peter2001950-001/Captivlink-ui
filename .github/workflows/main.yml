@@ -28,9 +28,8 @@ jobs:
 
     - name: Install and build frontend
       run: |
-        cd UI
         npm install
-        npm run build:prod
+        npm run build -- --c production
 
     - name: Login to GitHub Container Registry
       uses: docker/login-action@v2
@@ -62,5 +61,5 @@ jobs:
       with:
         app-name: 'captivlink-portal'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8479942D205E4AD5948A94F89CA7F340 }}
+        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_64A8997FF4FD40B5B9E44CE7C987E227 }}
         images: ${{ env.REGISTRY }}/peter200195-001/${{ env.FRONTEND_IMAGE_NAME }}:${{ env.TAG }}
