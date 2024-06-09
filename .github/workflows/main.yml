@@ -1,0 +1,66 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - master
+      
+env:
+  REGISTRY: ghcr.io
+  FRONTEND_IMAGE_NAME: captivlink-portal
+  TAG: ${{ github.sha }}
+
+jobs:
+  build-frontend:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 16
+
+    - name: Set current date as env variable
+      run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
+
+    - name: Install and build frontend
+      run: |
+        cd UI
+        npm install
+        npm run build:prod
+
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v2
+      with:
+        registry: ${{ env.REGISTRY }}
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Build and push frontend Docker image
+      uses: docker/build-push-action@v2
+      with:
+        context: ./
+        file: ./Dockerfile
+        push: true
+        tags: ${{ env.REGISTRY }}/petar200195-001/${{ env.FRONTEND_IMAGE_NAME }}:${{ env.TAG }}
+        
+  
+  deploy-frontend:
+    runs-on: ubuntu-latest
+    needs: [build-frontend]
+    environment:
+      name: 'production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+    steps:
+    - name: Deploy to Azure Web App
+      id: deploy-to-webapp
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'captivlink-portal'
+        slot-name: 'production'
+        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8479942D205E4AD5948A94F89CA7F340 }}
+        images: ${{ env.REGISTRY }}/peter200195-001/${{ env.FRONTEND_IMAGE_NAME }}:${{ env.TAG }}
