@@ -13,7 +13,9 @@ env:
 jobs:
   build-frontend:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: read
+      packages: write
     steps:
     - name: Check out repository
       uses: actions/checkout@v2
@@ -44,7 +46,7 @@ jobs:
         context: ./
         file: ./Dockerfile
         push: true
-        tags: ${{ env.REGISTRY }}/petar200195-001/${{ env.FRONTEND_IMAGE_NAME }}:${{ env.TAG }}
+        tags: ${{ env.REGISTRY }}/peter2001950-001/${{ env.FRONTEND_IMAGE_NAME }}:${{ env.TAG }}
         
   
   deploy-frontend:
@@ -62,4 +64,4 @@ jobs:
         app-name: 'captivlink-portal'
         slot-name: 'production'
         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_64A8997FF4FD40B5B9E44CE7C987E227 }}
-        images: ${{ env.REGISTRY }}/peter200195-001/${{ env.FRONTEND_IMAGE_NAME }}:${{ env.TAG }}
+        images: ${{ env.REGISTRY }}/peter2001950-001/${{ env.FRONTEND_IMAGE_NAME }}:${{ env.TAG }}
