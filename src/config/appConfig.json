@@ -1,6 +1,6 @@
 {
   "frontend": {
-    "baseUrl": "https://captivlink.com"
+    "baseUrl": "https://portal.captivlink.com"
   },
   "backend": {
     "baseUrl": "https://api.captivlink.com/api/",
