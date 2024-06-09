@@ -3,7 +3,8 @@
     "baseUrl": "$FRONTEND_BASEURL"
   },
   "backend": {
-    "baseUrl": "$API_BASEURL"
+    "baseUrl": "$API_BASEURL",
+    "authorityUrl": "$AUTHORITY_URL"
   },
   "publicApi": "$PULIC_API",
   "buildId": "$buildId",
