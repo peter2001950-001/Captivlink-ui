@@ -28,9 +28,9 @@ export class LayoutMenuComponent implements OnInit {
         }else{
           this.model = [
             {
-                label: 'Influencer',
+                label: 'Basic',
                 items: [
-                    { label: 'Feed', icon: 'pi pi-fw pi-home', routerLink: ['/creator/campaigns/feed'] },
+                    { label: 'My feed', icon: 'pi pi-fw pi-home', routerLink: ['/creator/campaigns/feed'] },
                     { label: 'Partnerships', icon: 'pi pi-fw pi-home', routerLink: ['/creator/campaigns/partnerships'] }
                 ]
             }
