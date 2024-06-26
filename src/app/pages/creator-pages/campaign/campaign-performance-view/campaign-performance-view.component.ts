@@ -1,3 +1,4 @@
+import { trigger } from '@angular/animations';
 import { HttpParams } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { CampaignService } from 'src/app/services/campaigns/campaign.service';
@@ -9,7 +10,14 @@ import { CampaignService } from 'src/app/services/campaigns/campaign.service';
 })
 export class CampaignPerformanceViewComponent implements OnInit {
 
-  constructor(private svc: CampaignService){}
+  constructor(private svc: CampaignService){
+    this.rangeDates = [];
+    var now: Date = new Date();
+    var today: Date = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var startDate = this.addDays(today, -7);
+    this.rangeDates.push(startDate);
+    this.rangeDates.push(today);
+  }
 
   items : Array<any> = [];
 
@@ -52,10 +60,12 @@ export class CampaignPerformanceViewComponent implements OnInit {
                 }
             }
         };
+
   }
 
   @Input() campaignId?: string;
-  rangeDates : Date[] = [this.addDays(new Date(), -7), new Date()];
+  now: Date = new Date();
+  rangeDates : Date[]
   data?: any;
   clicksChart?: any;
   purchaseChart?: any;
@@ -69,7 +79,6 @@ export class CampaignPerformanceViewComponent implements OnInit {
   }
 
   fetchData(){
-
     const documentStyle = getComputedStyle(document.documentElement);
     if(!this.campaignId) return;
     var params = new HttpParams();
@@ -90,7 +99,7 @@ export class CampaignPerformanceViewComponent implements OnInit {
 
   mapDataToChartModel(data: any, label: string, color: any){
     const documentStyle = getComputedStyle(document.documentElement);
-    var labels = data.labels.map((x: string) => new Date(x).toLocaleDateString());
+    var labels = data.labels.map((x: string) => new Date(x).toLocaleDateString() + " " + new Date(x).toLocaleTimeString());
     return {
       labels: labels,
       datasets:[{
