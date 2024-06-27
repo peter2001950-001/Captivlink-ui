@@ -11,7 +11,14 @@ import { CampaignService } from 'src/app/services/campaigns/campaign.service';
 export class CampaignsPerformanceComponent implements OnInit {
 
 
-  constructor(private svc: CampaignService){}
+  constructor(private svc: CampaignService){
+    this.rangeDates = [];
+    var now: Date = new Date();
+    var today: Date = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var startDate = this.addDays(today, -7);
+    this.rangeDates.push(startDate);
+    this.rangeDates.push(today);
+  }
 
   items : Array<any> = [];
   totalCount: number = 0;
@@ -60,7 +67,7 @@ export class CampaignsPerformanceComponent implements OnInit {
   }
 
   @Input() campaignId?: string;
-  rangeDates : Date[] = [this.addDays(new Date(), -7), new Date()];
+  rangeDates : Date[];
   data?: any;
   clicksChart?: any;
   purchaseChart?: any;
@@ -118,7 +125,7 @@ export class CampaignsPerformanceComponent implements OnInit {
 
   mapDataToChartModel(data: any, label: string, color: any){
     const documentStyle = getComputedStyle(document.documentElement);
-    var labels = data.labels.map((x: string) => new Date(x).toLocaleDateString());
+    var labels = data.labels.map((x: string) => new Date(x).toLocaleDateString() + " " + new Date(x).toLocaleTimeString());
     return {
       labels: labels,
       datasets:[{
