@@ -1,3 +1,4 @@
+import { CurrencyFormatterService } from './../../../shared/services/currency-formatter.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CampaignsListComponent } from './campaigns-list.component';
@@ -24,6 +25,6 @@ import { TagModule } from 'primeng/tag';
     CheckboxModule,
     TagModule
   ],
-  providers: [CampaignService, DialogService]
+  providers: [CampaignService, DialogService, CurrencyFormatterService]
 })
 export class CampaignsListModule { }

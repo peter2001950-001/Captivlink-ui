@@ -5,6 +5,7 @@ import { DialogService } from 'primeng/dynamicdialog';
 import { AwardType } from 'src/app/services/campaigns/campaign';
 import { CampaignService } from 'src/app/services/campaigns/campaign.service';
 import { CampaignViewComponent } from '../campaign-view/campaign-view.component';
+import { CurrencyFormatterService } from 'src/app/shared/services/currency-formatter.service';
 
 @Component({
   selector: 'app-campaign-feed',
@@ -12,7 +13,7 @@ import { CampaignViewComponent } from '../campaign-view/campaign-view.component'
   styleUrls: ['./campaign-feed.component.scss']
 })
 export class CampaignFeedComponent implements OnInit {
-  constructor(private svc: CampaignService, private dynamicDialog: DialogService){}
+  constructor(private svc: CampaignService, private dynamicDialog: DialogService, public currencyFormatter: CurrencyFormatterService){}
   first: number = 0;
   rowsPerPage: number = 3;
   loading: boolean = false;

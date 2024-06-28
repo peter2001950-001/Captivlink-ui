@@ -70,7 +70,7 @@
 
     <div class="col-6 mt-3">
       <span class="p-float-label">
-        <p-inputNumber formControlName="budgetPerCreator" mode="currency" inputId="currency-germany" currency="EUR"
+        <p-inputNumber formControlName="budgetPerCreator" mode="currency" inputId="currency-germany" [currency]="currencyFormatter.getCurrencyName()"
           locale="en-EN" class="w-full" styleClass="w-full" [min]="minBudget"> </p-inputNumber>
         <label for="link">Budget per content creator</label>
       </span>

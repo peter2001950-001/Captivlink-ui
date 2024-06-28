@@ -1,3 +1,4 @@
+import { CurrencyFormatterService } from './../../../shared/services/currency-formatter.service';
 import { HttpParams } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
@@ -15,7 +16,7 @@ awardType = AwardType;
 campaignStatus = CampaignStatus;
 website: any;
 
-  constructor(private svc: CampaignService, private router: Router){}
+  constructor(private svc: CampaignService, private router: Router, public currencyFormatter: CurrencyFormatterService){}
 
   campaigns : Array<Campaign> = [];
   totalCount: number = 0;

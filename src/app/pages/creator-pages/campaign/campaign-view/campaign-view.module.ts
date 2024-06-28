@@ -14,6 +14,7 @@ import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
+import { CurrencyFormatterService } from 'src/app/shared/services/currency-formatter.service';
 
 
 
@@ -36,7 +37,7 @@ import { InputTextModule } from 'primeng/inputtext';
     FormsModule,
     InputTextModule
   ],
-  providers: [DialogService, DynamicDialogConfig, DynamicDialogRef],
+  providers: [DialogService, DynamicDialogConfig, DynamicDialogRef, CurrencyFormatterService],
   exports:[CampaignViewComponent]
 })
 export class CampaignViewModule { }

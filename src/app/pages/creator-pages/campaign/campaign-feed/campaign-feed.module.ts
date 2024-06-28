@@ -1,3 +1,4 @@
+import { CurrencyFormatterService } from './../../../../shared/services/currency-formatter.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CampaignFeedComponent } from './campaign-feed.component';
@@ -30,6 +31,6 @@ import { NoContentModule } from 'src/app/shared/components/no-content/no-content
     CampaignViewModule,
     NoContentModule
   ],
-  providers: [DialogService]
+  providers: [DialogService, CurrencyFormatterService]
 })
 export class CampaignFeedModule { }

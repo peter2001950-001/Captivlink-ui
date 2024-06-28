@@ -8,6 +8,7 @@ import { AwardType } from 'src/app/services/campaigns/campaign';
 import { CampaignService } from 'src/app/services/campaigns/campaign.service';
 import { errorHandling } from 'src/app/services/error-handling';
 import { ImagePopupViewerComponent } from 'src/app/shared/components/image-popup-viewer/image-popup-viewer.component';
+import { CurrencyFormatterService } from 'src/app/shared/services/currency-formatter.service';
 
 @Component({
   selector: 'app-campaign-view',
@@ -19,7 +20,7 @@ export class CampaignViewComponent implements OnInit {
   @Input() mode: string = "modal";
 
   awardType = AwardType
-  constructor(private dynamicDialog: DialogService, public config: DynamicDialogConfig , private ref: DynamicDialogRef, private svc: CampaignService, private messageService: MessageService, private appConfig: AppConfigService){}
+  constructor(private dynamicDialog: DialogService, public config: DynamicDialogConfig , private ref: DynamicDialogRef, private svc: CampaignService, private messageService: MessageService, private appConfig: AppConfigService, public currencyFormatter: CurrencyFormatterService){}
 
 
   ngOnInit(): void {

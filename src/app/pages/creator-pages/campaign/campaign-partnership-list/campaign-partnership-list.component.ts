@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AwardType } from 'src/app/services/campaigns/campaign';
 import { CampaignService } from 'src/app/services/campaigns/campaign.service';
+import { CurrencyFormatterService } from 'src/app/shared/services/currency-formatter.service';
 
 @Component({
   selector: 'app-campaign-partnership-list',
@@ -11,7 +12,7 @@ import { CampaignService } from 'src/app/services/campaigns/campaign.service';
 })
 export class CampaignPartnershipListComponent {
 
-  constructor(public svc: CampaignService,  private router: Router){}
+  constructor(public svc: CampaignService,  private router: Router, public currencyFormatter: CurrencyFormatterService){}
 
   items : Array<any> = [];
   totalCount: number = 0;

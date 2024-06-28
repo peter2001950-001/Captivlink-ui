@@ -2,6 +2,7 @@ import { map } from 'rxjs';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService, ConfirmationService } from 'primeng/api';
+import { CurrencyFormatterService } from 'src/app/shared/services/currency-formatter.service';
 
 @Component({
   selector: 'app-campaigns-form',
@@ -17,7 +18,8 @@ export class CampaignsFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private messageService: MessageService,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    public currencyFormatter: CurrencyFormatterService
   ) {}
   form!: FormGroup;
   minDate: Date = new Date();

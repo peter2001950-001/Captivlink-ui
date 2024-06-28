@@ -2,6 +2,7 @@ import { map, min } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { CampaignService } from 'src/app/services/campaigns/campaign.service';
+import { CurrencyFormatterService } from 'src/app/shared/services/currency-formatter.service';
 
 @Component({
   selector: 'app-campaigns-performance',
@@ -11,7 +12,7 @@ import { CampaignService } from 'src/app/services/campaigns/campaign.service';
 export class CampaignsPerformanceComponent implements OnInit {
 
 
-  constructor(private svc: CampaignService){
+  constructor(private svc: CampaignService, public currencyFormatter: CurrencyFormatterService){
     this.rangeDates = [];
     var now: Date = new Date();
     var today: Date = new Date(now.getFullYear(), now.getMonth(), now.getDate());
@@ -92,7 +93,7 @@ export class CampaignsPerformanceComponent implements OnInit {
       this.data = data;
       this.clicksChart = this.mapDataToChartModel(data.clickData, "Link clicks", documentStyle.getPropertyValue('--blue-500') );
       this.purchaseChart = this.mapDataToChartModel(data.purchaseData, "Purchases", documentStyle.getPropertyValue('--green-500') );
-      this.purchaseValueChart = this.mapDataToChartModel(data.purchaseValueData, "Total purchase value in EUR", documentStyle.getPropertyValue('--yellow-500') );
+      this.purchaseValueChart = this.mapDataToChartModel(data.purchaseValueData, "Total purchase value in " + this.currencyFormatter.getCurrencyName(), documentStyle.getPropertyValue('--yellow-500') );
     });
     this.first = 0;
     this.fetchCreatorData();

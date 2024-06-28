@@ -15,9 +15,9 @@
               <div class="flex align-items-center gap-3">
                 <ng-container *ngFor="let award of item?.awards">
                   <p-tag *ngIf="award.type === awardType.Percentage" value="{{award.amount}}% per conversion"></p-tag>
-                  <p-tag *ngIf="award.type === awardType.PerClick" value="€{{award.amount}} per click"></p-tag>
+                  <p-tag *ngIf="award.type === awardType.PerClick" value="{{currencyFormatter.format(award.amount)}} per click"></p-tag>
                   <p-tag *ngIf="award.type === awardType.PerConversion"
-                    value="€{{award.amount}} per conversion"></p-tag>
+                    value="{{currencyFormatter.format(award.amount)}} per conversion"></p-tag>
                 </ng-container>
               </div>
             </div>
@@ -26,7 +26,7 @@
               <table class="details-table">
                 <tr>
                   <td>Budget: </td>
-                  <td>€{{item?.budgetPerCreator}}</td>
+                  <td>{{currencyFormatter.format(item?.budgetPerCreator)}}</td>
                 </tr>
                 <tr>
                   <td>End of campaign: </td>

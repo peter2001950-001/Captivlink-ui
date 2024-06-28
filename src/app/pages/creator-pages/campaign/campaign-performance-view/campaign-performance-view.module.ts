@@ -6,6 +6,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { ChartModule } from 'primeng/chart';
 import { TableModule } from 'primeng/table';
 import { PaginatorModule } from 'primeng/paginator';
+import { CurrencyFormatterService } from 'src/app/shared/services/currency-formatter.service';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { PaginatorModule } from 'primeng/paginator';
     TableModule,
     PaginatorModule
   ],
+  providers: [CurrencyFormatterService],
   exports: [CampaignPerformanceViewComponent]
 })
 export class CampaignPerformanceViewModule { }

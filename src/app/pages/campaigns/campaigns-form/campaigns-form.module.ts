@@ -16,6 +16,7 @@ import { AwardsSelectModule } from 'src/app/shared/components/awards-select/awar
 import { InputErrorMessageModule } from 'src/app/shared/components/input-error-message/input-error-message.module';
 import { ConfirmationService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { CurrencyFormatterService } from 'src/app/shared/services/currency-formatter.service';
 
 
 
@@ -41,7 +42,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     InputErrorMessageModule,
     ConfirmDialogModule
   ],
-  providers:[ConfirmationService],
+  providers:[ConfirmationService, CurrencyFormatterService],
   exports: [CampaignsFormComponent]
 })
 export class CampaignsFormModule { }

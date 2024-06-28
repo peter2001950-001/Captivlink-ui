@@ -23,12 +23,12 @@
               width="100"
             /></td>
             <td>{{item.externalName}}</td>
-            <td>{{"€" + item.budgetPerCreator}}</td>
+            <td>{{currencyFormatter.format(item.budgetPerCreator)}}</td>
             <td>
               <div style="margin: 5px;" *ngFor="let award of item.awards">
                 <p-tag *ngIf="award.type === awardType.Percentage" value="{{award.amount}}% per conversion"></p-tag>
-                <p-tag *ngIf="award.type === awardType.PerClick" value="€{{award.amount}} per click"></p-tag>
-                <p-tag *ngIf="award.type === awardType.PerConversion" value="€{{award.amount}} per conversion"></p-tag>
+                <p-tag *ngIf="award.type === awardType.PerClick" value="{{currencyFormatter.format(award.amount)}} per click"></p-tag>
+                <p-tag *ngIf="award.type === awardType.PerConversion" value="{{currencyFormatter.format(award.amount)}} per conversion"></p-tag>
               </div>
             </td>
             <td>
@@ -38,7 +38,7 @@
                 <p-tag severity="success" *ngIf="item.partnership?.status === 'Approved'" value="Approved"></p-tag>
               </div>
             </td>
-            <td>{{"€" + item.amountEarned}}</td>
+            <td>{{currencyFormatter.format(item.amountEarned)}}</td>
             <td>
               <button pButton icon="pi pi-eye" (click)="open(item)">View details</button>
             </td>

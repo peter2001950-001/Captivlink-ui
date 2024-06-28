@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, forwardRef } from '@angular/core';
 import { ControlValueAccessor, FormArray, FormBuilder, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Award, AwardType } from 'src/app/services/campaigns/campaign';
+import { CurrencyFormatterService } from '../../services/currency-formatter.service';
 
 @Component({
   selector: 'app-awards-select',
@@ -27,7 +28,7 @@ export class AwardsSelectComponent implements OnInit, ControlValueAccessor {
   }]
   awardType = AwardType;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, public currencuFormatter: CurrencyFormatterService) { }
 
   ngOnInit() {
     this.form = this.fb.group({

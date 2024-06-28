@@ -10,12 +10,12 @@
         <div style="flex-grow: 2;">
           <span class="p-float-label" *ngIf="award.get('type')?.value == awardType.PerClick">
             <p-inputNumber  formControlName="amount"
-              mode="currency" inputId="currency-germany" currency="EUR" locale="en-EN"></p-inputNumber>
+              mode="currency" inputId="currency-germany" [currency]="currencuFormatter.getCurrencyName()" locale="en-EN"></p-inputNumber>
             <label>Reward per click</label>
           </span>
           <span class="p-float-label" *ngIf="award.get('type')?.value == awardType.PerConversion">
             <p-inputNumber  formControlName="amount"
-              mode="currency" inputId="currency-germany" currency="EUR" locale="en-EN"></p-inputNumber>
+              mode="currency" inputId="currency-germany" [currency]="currencuFormatter.getCurrencyName()" locale="en-EN"></p-inputNumber>
             <label>Reward per purchase</label>
           </span>
           <span class="p-float-label" *ngIf="award.get('type')?.value == awardType.Percentage">

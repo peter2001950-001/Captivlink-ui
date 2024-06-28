@@ -1,3 +1,4 @@
+import { CurrencyFormatterService } from './../../../shared/services/currency-formatter.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CampaignsPerformanceComponent } from './campaigns-performance.component';
@@ -24,6 +25,7 @@ import { PaginatorModule } from 'primeng/paginator';
     ContentCreatorDetailsModule,
     PaginatorModule
   ],
+  providers:[CurrencyFormatterService],
   exports: [CampaignsPerformanceComponent]
 })
 export class CampaignsPerformanceModule { }

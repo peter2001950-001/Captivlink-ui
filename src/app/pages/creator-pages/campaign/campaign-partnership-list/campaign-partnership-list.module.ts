@@ -11,6 +11,7 @@ import { TagModule } from 'primeng/tag';
 import { CampaignService } from 'src/app/services/campaigns/campaign.service';
 import { ConfirmationService } from 'primeng/api';
 import { NoContentModule } from 'src/app/shared/components/no-content/no-content.module';
+import { CurrencyFormatterService } from 'src/app/shared/services/currency-formatter.service';
 
 
 
@@ -29,6 +30,6 @@ import { NoContentModule } from 'src/app/shared/components/no-content/no-content
     TagModule,
     NoContentModule
   ],
-  providers:[ConfirmationService]
+  providers:[ConfirmationService, CurrencyFormatterService]
 })
 export class CampaignPartnershipListModule { }

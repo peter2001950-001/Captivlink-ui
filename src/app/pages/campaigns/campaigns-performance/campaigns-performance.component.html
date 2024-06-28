@@ -33,11 +33,11 @@
     <div class="card mb-0">
       <div class="flex justify-content-between mb-3">
         <div><span class="block text-500 font-medium mb-3">Purchases Total Value</span>
-          <div class="text-900 font-medium text-xl">€{{data?.metricsForPeriod.totalValue}}</div>
+          <div class="text-900 font-medium text-xl">{{currencyFormatter.format(data?.metricsForPeriod.totalValue)}}</div>
         </div>
         <div class="flex align-items-center justify-content-center bg-blue-100 border-round"
           style="width: 2.5rem; height: 2.5rem;"><i class="pi pi-shopping-cart text-blue-500 text-xl"></i></div>
-      </div><span class="text-green-500 font-medium">€{{data?.metricsLifetime.totalValue}} </span><span
+      </div><span class="text-green-500 font-medium">{{currencyFormatter.format(data?.metricsLifetime.totalValue)}} </span><span
         class="text-500">in total</span>
     </div>
   </div>
@@ -45,11 +45,11 @@
     <div class="card mb-0">
       <div class="flex justify-content-between mb-3">
         <div><span class="block text-500 font-medium mb-3">Amount spent</span>
-          <div class="text-900 font-medium text-xl">€{{data?.metricsForPeriod.totalAmountSpent}}</div>
+          <div class="text-900 font-medium text-xl">{{currencyFormatter.format(data?.metricsForPeriod.totalAmountSpent)}}</div>
         </div>
         <div class="flex align-items-center justify-content-center bg-blue-100 border-round"
           style="width: 2.5rem; height: 2.5rem;"><i class="pi pi-shopping-cart text-blue-500 text-xl"></i></div>
-      </div><span class="text-green-500 font-medium">€{{data?.metricsLifetime.totalAmountSpent}} </span><span
+      </div><span class="text-green-500 font-medium">{{currencyFormatter.format(data?.metricsLifetime.totalAmountSpent)}} </span><span
         class="text-500">in total</span>
     </div>
   </div>
@@ -91,14 +91,14 @@
             <td>{{item.contentCreator?.nickname}}</td>
             <td>{{item.metricsForPeriod.totalClick}}</td>
             <td>{{item.metricsForPeriod.totalPurchases}}</td>
-            <td>€{{item.metricsForPeriod.totalValue}}</td>
-            <td>€{{item.metricsForPeriod.totalAmountSpent}}</td>
+            <td>{{currencyFormatter.format(item.metricsForPeriod.totalValue)}}</td>
+            <td>{{currencyFormatter.format(item.metricsForPeriod.totalAmountSpent)}}</td>
             <td>
               <div class="mt-2 md:mt-0 flex align-items-center">
                 <div class="surface-300 border-round overflow-hidden w-10rem lg:w-6rem" style="height: 8px;">
                   <div class="bg-orange-500 h-full" [style.width]='(item.metricsLifetime.totalAmountSpent/item.budget)*100+"%"'></div>
                 </div>
-                <span class="text-orange-500 ml-3 font-medium">€{{item.metricsLifetime.totalAmountSpent}}</span>
+                <span class="text-orange-500 ml-3 font-medium">{{currencyFormatter.format(item.metricsLifetime.totalAmountSpent)}}</span>
               </div>
             </td>
             <td class="action-bar">
